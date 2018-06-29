@@ -1,0 +1,88 @@
+{
+  "name": "Revista",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "subtitulo": {
+      "type": "string"
+    },
+    "titulo_corto": {
+      "type": "string",
+      "required": true
+    },
+    "issn": {
+      "type": "string"
+    },
+    "eissn": {
+      "type": "string"
+    },
+    "periodicidad": {
+      "type": "string",
+      "required": true
+    },
+    "responsable": {
+      "type": "object",
+      "required": true
+    },
+    "emails": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    },
+    "institucion": {
+      "type": "object"
+    },
+    "categoria": {
+      "type": "object",
+      "required": true
+    },
+    "ubicacion": {
+      "type": "object"
+    },
+    "licencia": {
+      "type": "object",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "social": {
+      "type": "object"
+    },
+    "direccion_postal": {
+      "type": "object"
+    },
+    "imagen": {
+      "type": "string",
+      "required": true
+    },
+    "ultima_portada": {
+      "type": "string"
+    },
+    "doi": {
+      "type": "string"
+    },
+    "redalyc": {
+      "type": "string"
+    },
+    "tags": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

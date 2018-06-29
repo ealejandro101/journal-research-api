@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongoatlas": {
+    "host": "cluster0-shard-00-00-z7d2w.mongodb.net",
+    "port": 27017,
+    "url": "mongodb://researchdba:researchdba12@cluster0-shard-00-00-z7d2w.mongodb.net:27017,cluster0-shard-00-01-z7d2w.mongodb.net:27017,cluster0-shard-00-02-z7d2w.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
+    "database": "test",
+    "password": "researchdba12",
+    "name": "mongoatlas",
+    "user": "researchdba",
+    "connector": "mongodb"
+  }
+}
