@@ -2,5 +2,14 @@
     "db": {
         "name": "db",
         "connector": "memory"
+    },
+    "researchDS": {
+        "host": "localhost",
+        "port": 3306,
+        "database": "researchdb",
+        "password": "temporal",
+        "name": "researchDS",
+        "user": "research",
+        "connector": "mysql"
     }
 }
