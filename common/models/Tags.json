@@ -1,0 +1,32 @@
+{
+	"name": "Tags",
+	"properties": {
+		"tag": {
+			"type": "string",
+			"required": true,
+			"length": 15,
+			"precision": null,
+			"scale": null,
+			"id": 1,
+			"mysql": {
+				"columnName": "tag",
+				"dataType": "varchar",
+				"dataLength": 15,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "N"
+			},
+			"updateOnly": false
+		}
+	},
+	"settings": {
+		"strict": false,
+		"forceId": false,
+		"replaceOnPUT": true,
+		"idInjection": false,
+		"mysql": {
+			"schema": "researchdb",
+			"table": "tags"
+		}
+	}
+}

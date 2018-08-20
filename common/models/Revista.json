@@ -1,0 +1,227 @@
+{
+	"name": "Revista",
+	"properties": {
+		"id": {
+			"type": "number",
+			"required": true,
+			"length": null,
+			"precision": 10,
+			"scale": 0,
+			"id": 1,
+			"mysql": {
+				"columnName": "id",
+				"dataType": "int",
+				"dataLength": null,
+				"dataPrecision": 10,
+				"dataScale": 0,
+				"nullable": "N"
+			},
+			"updateOnly": false
+		},
+		"titulo": {
+			"type": "string",
+			"required": true,
+			"length": 100,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "titulo",
+				"dataType": "varchar",
+				"dataLength": 100,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "N"
+			}
+		},
+		"subtitulo": {
+			"type": "string",
+			"required": false,
+			"length": 100,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "subtitulo",
+				"dataType": "varchar",
+				"dataLength": 100,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"tituloCorto": {
+			"type": "string",
+			"required": false,
+			"length": 45,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "titulo_corto",
+				"dataType": "varchar",
+				"dataLength": 45,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"categoria": {
+			"type": "number",
+			"required": true,
+			"length": null,
+			"precision": 10,
+			"scale": 0,
+			"mysql": {
+				"columnName": "categoria",
+				"dataType": "int",
+				"dataLength": null,
+				"dataPrecision": 10,
+				"dataScale": 0,
+				"nullable": "N"
+			}
+		},
+		"issn": {
+			"type": "string",
+			"required": false,
+			"length": 45,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "issn",
+				"dataType": "varchar",
+				"dataLength": 45,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"eissn": {
+			"type": "string",
+			"required": false,
+			"length": 45,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "eissn",
+				"dataType": "varchar",
+				"dataLength": 45,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"periodicidad": {
+			"type": "string",
+			"required": false,
+			"length": 15,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "periodicidad",
+				"dataType": "varchar",
+				"dataLength": 15,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"licenciaId": {
+			"type": "number",
+			"required": true,
+			"length": null,
+			"precision": 10,
+			"scale": 0,
+			"mysql": {
+				"columnName": "licencia_id",
+				"dataType": "int",
+				"dataLength": null,
+				"dataPrecision": 10,
+				"dataScale": 0,
+				"nullable": "N"
+			}
+		},
+		"url": {
+			"type": "string",
+			"required": true,
+			"length": 100,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "url",
+				"dataType": "varchar",
+				"dataLength": 100,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "N"
+			}
+		},
+		"tags": {
+			"type": "string",
+			"required": false,
+			"length": 100,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "tags",
+				"dataType": "varchar",
+				"dataLength": 100,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"imagen": {
+			"type": "string",
+			"required": false,
+			"length": 45,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "imagen",
+				"dataType": "varchar",
+				"dataLength": 45,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"doi": {
+			"type": "string",
+			"required": false,
+			"length": 15,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "doi",
+				"dataType": "varchar",
+				"dataLength": 15,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		},
+		"redalyc": {
+			"type": "string",
+			"required": false,
+			"length": 15,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "redalyc",
+				"dataType": "varchar",
+				"dataLength": 15,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "Y"
+			}
+		}
+	},
+	"settings": {
+		"strict": false,
+		"forceId": false,
+		"replaceOnPUT": true,
+		"idInjection": false,
+		"mysql": {
+			"schema": "researchdb",
+			"table": "revista"
+		}
+	}
+}

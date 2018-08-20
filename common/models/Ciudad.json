@@ -1,0 +1,64 @@
+{
+	"name": "Ciudad",
+	"properties": {
+		"ciudad": {
+			"type": "string",
+			"required": true,
+			"length": 45,
+			"precision": null,
+			"scale": null,
+			"id": 1,
+			"mysql": {
+				"columnName": "ciudad",
+				"dataType": "varchar",
+				"dataLength": 45,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "N"
+			},
+			"updateOnly": false
+		},
+		"estado": {
+			"type": "string",
+			"required": true,
+			"length": 45,
+			"precision": null,
+			"scale": null,
+			"id": 2,
+			"mysql": {
+				"columnName": "estado",
+				"dataType": "varchar",
+				"dataLength": 45,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "N"
+			}
+		},
+		"pais": {
+			"type": "string",
+			"required": true,
+			"length": 45,
+			"precision": null,
+			"scale": null,
+			"id": 3,
+			"mysql": {
+				"columnName": "pais",
+				"dataType": "varchar",
+				"dataLength": 45,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "N"
+			}
+		}
+	},
+	"settings": {
+		"strict": false,
+		"forceId": false,
+		"replaceOnPUT": true,
+		"idInjection": false,
+		"mysql": {
+			"schema": "researchdb",
+			"table": "ciudad"
+		}
+	}
+}
