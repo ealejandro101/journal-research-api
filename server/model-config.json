@@ -34,49 +34,5 @@
 	"Role": {
 		"dataSource": "db",
 		"public": false
-	},
-	"Categoria": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Ciudad": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Estado": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Licencia": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Pais": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RAcercade": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RContacto": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RSocial": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RUbicacion": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Revista": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Tags": {
-		"dataSource": "researchds",
-		"public": true
 	}
 }
