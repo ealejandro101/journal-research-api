@@ -1,118 +1,38 @@
 {
-	"_meta": {
-		"sources": [
-			"loopback/common/models",
-			"loopback/server/models",
-			"../common/models",
-			"./models"
-		],
-		"mixins": [
-			"loopback/common/mixins",
-			"loopback/server/mixins",
-			"../common/mixins",
-			"./mixins"
-		]
-	},
-	"User": {
-		"dataSource": "db"
-	},
-	"AccessToken": {
-		"dataSource": "db",
-		"public": false
-	},
-	"ACL": {
-		"dataSource": "db",
-		"public": false
-	},
-	"RoleMapping": {
-		"dataSource": "db",
-		"public": false,
-		"options": {
-			"strictObjectIDCoercion": true
-		}
-	},
-	"Role": {
-		"dataSource": "db",
-		"public": false
-	},
-	"Categoria": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Ciudad": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Disciplina": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Estado": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"EstiloCitacion": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Idioma": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Indexaciones": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Licencia": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Pais": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"PalabraClave": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"PalabrasClave": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Periodicidad": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"PoliticaAutoarchivo": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RAdicional": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RContacto": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RIdiomas": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RIndexaciones": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RUbicacion": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Revista": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"TipoRevisionPares": {
-		"dataSource": "researchds",
-		"public": true
-	}
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models",
+            "./models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "loopback/server/mixins",
+            "../common/mixins",
+            "./mixins"
+        ]
+    },
+    "User": {
+        "dataSource": "db"
+    },
+    "AccessToken": {
+        "dataSource": "db",
+        "public": false
+    },
+    "ACL": {
+        "dataSource": "db",
+        "public": false
+    },
+    "RoleMapping": {
+        "dataSource": "db",
+        "public": false,
+        "options": {
+            "strictObjectIDCoercion": true
+        }
+    },
+    "Role": {
+        "dataSource": "db",
+        "public": false
+    }
 }
