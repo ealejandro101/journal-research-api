@@ -1,51 +1,47 @@
 {
-	"name": "Ridiomas",
-	"properties": {
-		"idiomaId": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"mysql": {
-				"columnName": "idioma_id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			}
-		},
-		"revistaId": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"mysql": {
-				"columnName": "revista_id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			}
-		},
-		"id": {
-			"type": "number",
-			"id": 1,
-			"generated": true,
-			"updateOnly": true
-		}
-	},
-	"settings": {
-		"strict": false,
-		"forceId": "auto",
-		"replaceOnPUT": true,
-		"idInjection": false,
-		"mysql": {
-			"schema": "researchdb",
-			"table": "ridiomas"
-		}
-	}
+    "name": "Ridiomas",
+    "properties": {
+        "idiomaId": {
+            "type": "number",
+            "id": 1,
+            "required": true,
+            "length": null,
+            "precision": 10,
+            "scale": 0,
+            "mysql": {
+                "columnName": "idioma_id",
+                "dataType": "int",
+                "dataLength": null,
+                "dataPrecision": 10,
+                "dataScale": 0,
+                "nullable": "N"
+            }
+        },
+        "revistaId": {
+            "type": "number",
+            "id": 2,
+            "required": true,
+            "length": null,
+            "precision": 10,
+            "scale": 0,
+            "mysql": {
+                "columnName": "revista_id",
+                "dataType": "int",
+                "dataLength": null,
+                "dataPrecision": 10,
+                "dataScale": 0,
+                "nullable": "N"
+            }
+        }
+    },
+    "settings": {
+        "strict": false,
+        "forceId": "auto",
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "ridiomas"
+        }
+    }
 }
