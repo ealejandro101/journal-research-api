@@ -1,5 +1,5 @@
 {
-	"name": "RUbicacion",
+	"name": "Rubicacion",
 	"properties": {
 		"ciudadId": {
 			"type": "number",
@@ -86,7 +86,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "r_ubicacion"
+			"table": "rubicacion"
 		}
 	}
 }

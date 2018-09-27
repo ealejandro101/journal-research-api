@@ -1,5 +1,5 @@
 {
-	"name": "EstiloCitacion",
+	"name": "Estilocitacion",
 	"properties": {
 		"estiloCitacion": {
 			"type": "string",
@@ -41,7 +41,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "estilo_citacion"
+			"table": "estilocitacion"
 		}
 	}
 }

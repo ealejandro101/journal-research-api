@@ -1,5 +1,5 @@
 {
-	"name": "RIdiomas",
+	"name": "Ridiomas",
 	"properties": {
 		"idiomaId": {
 			"type": "number",
@@ -45,7 +45,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "r_idiomas"
+			"table": "ridiomas"
 		}
 	}
 }

@@ -1,5 +1,5 @@
 {
-	"name": "RIndexaciones",
+	"name": "Rindexaciones",
 	"properties": {
 		"indexacionesId": {
 			"type": "number",
@@ -60,7 +60,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "r_indexaciones"
+			"table": "rindexaciones"
 		}
 	}
 }

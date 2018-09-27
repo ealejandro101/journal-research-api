@@ -1,5 +1,5 @@
 {
-	"name": "PoliticaAutoarchivo",
+	"name": "Politicaautoarchivo",
 	"properties": {
 		"id": {
 			"type": "number",
@@ -41,7 +41,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "politica_autoarchivo"
+			"table": "politicaautoarchivo"
 		}
 	}
 }

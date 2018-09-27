@@ -1,5 +1,5 @@
 {
-	"name": "TipoRevisionPares",
+	"name": "Tiporevisionpares",
 	"properties": {
 		"id": {
 			"type": "number",
@@ -41,7 +41,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "tipo_revision_pares"
+			"table": "tiporevisionpares"
 		}
 	}
 }

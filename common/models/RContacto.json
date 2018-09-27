@@ -1,5 +1,5 @@
 {
-	"name": "RContacto",
+	"name": "Rcontacto",
 	"properties": {
 		"editor": {
 			"type": "string",
@@ -101,7 +101,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "r_contacto"
+			"table": "rcontacto"
 		}
 	}
 }

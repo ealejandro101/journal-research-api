@@ -1,5 +1,5 @@
 {
-	"name": "PalabrasClave",
+	"name": "Palabrasclave",
 	"properties": {
 		"palabraClaveId": {
 			"type": "number",
@@ -45,7 +45,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "palabras_clave"
+			"table": "palabrasclave"
 		}
 	}
 }

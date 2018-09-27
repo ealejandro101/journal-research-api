@@ -1,5 +1,5 @@
 {
-	"name": "RAdicional",
+	"name": "Radicional",
 	"properties": {
 		"apc": {
 			"type": "number",
@@ -356,7 +356,7 @@
 		"idInjection": false,
 		"mysql": {
 			"schema": "researchdb",
-			"table": "r_adicional"
+			"table": "radicional"
 		}
 	}
 }

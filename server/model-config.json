@@ -51,7 +51,7 @@
 		"dataSource": "researchds",
 		"public": true
 	},
-	"EstiloCitacion": {
+	"Estilocitacion": {
 		"dataSource": "researchds",
 		"public": true
 	},
@@ -71,11 +71,11 @@
 		"dataSource": "researchds",
 		"public": true
 	},
-	"PalabraClave": {
+	"Palabraclave": {
 		"dataSource": "researchds",
 		"public": true
 	},
-	"PalabrasClave": {
+	"Palabrasclave": {
 		"dataSource": "researchds",
 		"public": true
 	},
@@ -83,27 +83,15 @@
 		"dataSource": "researchds",
 		"public": true
 	},
-	"PoliticaAutoarchivo": {
+	"Politicaautoarchivo": {
 		"dataSource": "researchds",
 		"public": true
 	},
-	"RAdicional": {
+	"Radicional": {
 		"dataSource": "researchds",
 		"public": true
 	},
-	"RContacto": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RIdiomas": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RIndexaciones": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"RUbicacion": {
+	"Rcontacto": {
 		"dataSource": "researchds",
 		"public": true
 	},
@@ -111,7 +99,19 @@
 		"dataSource": "researchds",
 		"public": true
 	},
-	"TipoRevisionPares": {
+	"Ridiomas": {
+		"dataSource": "researchds",
+		"public": true
+	},
+	"Rindexaciones": {
+		"dataSource": "researchds",
+		"public": true
+	},
+	"Rubicacion": {
+		"dataSource": "researchds",
+		"public": true
+	},
+	"Tiporevisionpares": {
 		"dataSource": "researchds",
 		"public": true
 	}
