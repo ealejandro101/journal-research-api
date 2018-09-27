@@ -1,0 +1,66 @@
+{
+	"name": "RIndexaciones",
+	"properties": {
+		"indexacionesId": {
+			"type": "number",
+			"required": true,
+			"length": null,
+			"precision": 10,
+			"scale": 0,
+			"mysql": {
+				"columnName": "indexaciones_id",
+				"dataType": "int",
+				"dataLength": null,
+				"dataPrecision": 10,
+				"dataScale": 0,
+				"nullable": "N"
+			}
+		},
+		"parametro": {
+			"type": "string",
+			"required": true,
+			"length": 100,
+			"precision": null,
+			"scale": null,
+			"mysql": {
+				"columnName": "parametro",
+				"dataType": "varchar",
+				"dataLength": 100,
+				"dataPrecision": null,
+				"dataScale": null,
+				"nullable": "N"
+			}
+		},
+		"revistaId": {
+			"type": "number",
+			"required": true,
+			"length": null,
+			"precision": 10,
+			"scale": 0,
+			"mysql": {
+				"columnName": "revista_id",
+				"dataType": "int",
+				"dataLength": null,
+				"dataPrecision": 10,
+				"dataScale": 0,
+				"nullable": "N"
+			}
+		},
+		"id": {
+			"type": "number",
+			"id": 1,
+			"generated": true,
+			"updateOnly": true
+		}
+	},
+	"settings": {
+		"strict": false,
+		"forceId": "auto",
+		"replaceOnPUT": true,
+		"idInjection": false,
+		"mysql": {
+			"schema": "researchdb",
+			"table": "r_indexaciones"
+		}
+	}
+}
