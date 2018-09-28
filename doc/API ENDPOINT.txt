@@ -1,0 +1,22 @@
+La utilización del API por medio de REST para consultar las revistas es:
+
+Endpoint
+http://localhost:3000/api/Revista
+
+Para pasar filtros se debe enviar la clave "filter" como parametro y un JSON con la consulta de valor.
+
+filter={
+  "where":{
+    "or":
+    [
+      {"descripcion": {"regexp":"/CONOCIMIENTO/i"} },
+      {"titulo": {"regexp":"/CONOCIMIENTO/i"} },
+      {"tituloCorto": {"regexp":"/CONOCIMIENTO/i"} },
+      {"subtitulo": {"regexp":"/CONOCIMIENTO/i"} }
+    ]
+  }
+}
+
+Al unir todo queda así:
+
+http://localhost:3000/api/Revista?filter={%22where%22:{%22or%22:[{%22descripcion%22:{%22regexp%22:%22/CONOCIMIENTO/i%22}},{%22titulo%22:{%22regexp%22:%22/CONOCIMIENTO/i%22}},{%22tituloCorto%22:%20{%22regexp%22:%22/CONOCIMIENTO/i%22}%20},{%22subtitulo%22:{%22regexp%22:%22/CONOCIMIENTO/i%22}}]}}
