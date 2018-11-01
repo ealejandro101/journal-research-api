@@ -1,92 +1,96 @@
 {
-	"name": "Rubicacion",
-	"properties": {
-		"ciudadId": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"mysql": {
-				"columnName": "ciudad_id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			}
-		},
-		"direccion": {
-			"type": "string",
-			"required": false,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "direccion",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"id": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"id": 1,
-			"mysql": {
-				"columnName": "id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			},
-			"updateOnly": false
-		},
-		"telefono": {
-			"type": "string",
-			"required": false,
-			"length": 15,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "telefono",
-				"dataType": "varchar",
-				"dataLength": 15,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"zipcode": {
-			"type": "string",
-			"required": false,
-			"length": 15,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "zipcode",
-				"dataType": "varchar",
-				"dataLength": 15,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		}
-	},
-	"settings": {
-		"strict": false,
-		"forceId": false,
-		"replaceOnPUT": true,
-		"idInjection": false,
-		"mysql": {
-			"schema": "researchdb",
-			"table": "rubicacion"
-		}
-	}
+  "name": "Rubicacion",
+  "settings": {
+    "strict": false,
+    "forceId": false,
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "researchdb",
+      "table": "rubicacion"
+    }
+  },
+  "properties": {
+    "ciudadId": {
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "ciudad_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "direccion": {
+      "type": "string",
+      "required": false,
+      "length": 45,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "direccion",
+        "dataType": "varchar",
+        "dataLength": 45,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "id": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "telefono": {
+      "type": "string",
+      "required": false,
+      "length": 15,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "telefono",
+        "dataType": "varchar",
+        "dataLength": 15,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "zipcode": {
+      "type": "string",
+      "required": false,
+      "length": 15,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "zipcode",
+        "dataType": "varchar",
+        "dataLength": 15,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
 }

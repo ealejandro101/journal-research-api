@@ -1,212 +1,245 @@
 {
-	"name": "Revista",
-	"properties": {
-		"categoriaId": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"mysql": {
-				"columnName": "categoria_id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			}
-		},
-		"descripcion": {
-			"type": "string",
-			"required": false,
-			"length": 16777215,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "descripcion",
-				"dataType": "mediumtext",
-				"dataLength": 16777215,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"doi": {
-			"type": "string",
-			"required": false,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "doi",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"eissn": {
-			"type": "string",
-			"required": false,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "eissn",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"fechaCreacion": {
-			"type": "date",
-			"required": true,
-			"length": null,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "fecha_creacion",
-				"dataType": "date",
-				"dataLength": null,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		},
-		"fechaIngreso": {
-			"type": "date",
-			"required": true,
-			"length": null,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "fecha_ingreso",
-				"dataType": "date",
-				"dataLength": null,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		},
-		"id": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"id": 1,
-			"mysql": {
-				"columnName": "id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			},
-			"updateOnly": false
-		},
-		"imagen": {
-			"type": "string",
-			"required": false,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "imagen",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"issn": {
-			"type": "string",
-			"required": false,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "issn",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"licenciaId": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"mysql": {
-				"columnName": "licencia_id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			}
-		},
-		"subtitulo": {
-			"type": "string",
-			"required": false,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "subtitulo",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"titulo": {
-			"type": "string",
-			"required": true,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "titulo",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		},
-		"tituloCorto": {
-			"type": "string",
-			"required": false,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "titulo_corto",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		}
-	},
-	"settings": {
-		"strict": false,
-		"forceId": false,
-		"replaceOnPUT": true,
-		"idInjection": false,
-		"mysql": {
-			"schema": "researchdb",
-			"table": "revista"
-		}
-	}
+  "name": "Revista",
+  "settings": {
+    "strict": false,
+    "forceId": false,
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "researchdb",
+      "table": "revista"
+    }
+  },
+  "properties": {
+    "categoriaId": {
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "categoria_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "descripcion": {
+      "type": "string",
+      "required": false,
+      "length": 16777215,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "descripcion",
+        "dataType": "mediumtext",
+        "dataLength": 16777215,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "doi": {
+      "type": "string",
+      "required": false,
+      "length": 45,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "doi",
+        "dataType": "varchar",
+        "dataLength": 45,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "eissn": {
+      "type": "string",
+      "required": false,
+      "length": 45,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "eissn",
+        "dataType": "varchar",
+        "dataLength": 45,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "fechaCreacion": {
+      "type": "date",
+      "required": true,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "fecha_creacion",
+        "dataType": "date",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "fechaIngreso": {
+      "type": "date",
+      "required": true,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "fecha_ingreso",
+        "dataType": "date",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "id": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "imagen": {
+      "type": "string",
+      "required": false,
+      "length": 100,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "imagen",
+        "dataType": "varchar",
+        "dataLength": 100,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "issn": {
+      "type": "string",
+      "required": false,
+      "length": 45,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "issn",
+        "dataType": "varchar",
+        "dataLength": 45,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "licenciaId": {
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "licencia_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "subtitulo": {
+      "type": "string",
+      "required": false,
+      "length": 100,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "subtitulo",
+        "dataType": "varchar",
+        "dataLength": 100,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "length": 100,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "titulo",
+        "dataType": "varchar",
+        "dataLength": 100,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "tituloCorto": {
+      "type": "string",
+      "required": false,
+      "length": 45,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "titulo_corto",
+        "dataType": "varchar",
+        "dataLength": 45,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "busqueda": {
+      "accepts": [
+        {
+          "arg": "q",
+          "type": "string",
+          "required": true,
+          "description": "Cadena de caracter para buscar por diferentes campos",
+          "http": {
+            "source": "form"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "revistas",
+          "type": "object",
+          "root": false,
+          "description": "Lista de revistas que cumplen con el críterio"
+        }
+      ],
+      "description": "Retorna un listado de revistas que coinciden con la busqueda",
+      "http": [
+        {
+          "path": "busqueda",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

@@ -1,15 +1,15 @@
 {
-    "db": {
-        "name": "db",
-        "connector": "memory"
-    },
-    "researchds": {
-        "host": "localhost",
-        "port": 3306,
-        "database": "researchdb",
-        "password": "temporal",
-        "name": "researchds",
-        "user": "research",
-        "connector": "mysql"
-    }
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "researchds": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "researchdb",
+    "password": "temporal",
+    "name": "researchds",
+    "user": "research",
+    "connector": "mysql"
+  }
 }
