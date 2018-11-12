@@ -219,10 +219,7 @@
           "arg": "q",
           "type": "string",
           "required": true,
-          "description": "Cadena de caracter para buscar por diferentes campos",
-          "http": {
-            "source": "form"
-          }
+          "description": "Cadena de caracter para buscar por diferentes campos"
         }
       ],
       "returns": [
@@ -236,7 +233,7 @@
       "description": "Retorna un listado de revistas que coinciden con la busqueda",
       "http": [
         {
-          "path": "busqueda",
+          "path": "/busqueda",
           "verb": "get"
         }
       ]
