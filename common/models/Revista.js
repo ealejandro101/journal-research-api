@@ -6,8 +6,22 @@ module.exports = function(Revista) {
    */
 
   Revista.busqueda = function(q, callback) {
-    var revistas = "hola";
-    // TODO
-    callback(null, revistas);
+    var filter = {
+      "where":{
+        "or":
+        [
+          {"descripcion": {"regexp":q+"/i"} },
+          {"titulo": {"regexp":q+"/i"} },
+          {"tituloCorto": {"regexp":q+"/i"} },
+          {"subtitulo": {"regexp":q+"/i"} }
+        ]
+      }
+    };
+    console.log(filter);
+    Revista.find(filter, function(err, instance) {
+      revistas = instance;
+      callback(null, revistas);
+      console.log(revistas);
+    });
   };
 };
