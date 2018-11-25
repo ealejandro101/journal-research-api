@@ -114,5 +114,9 @@
   "Tiporevisionpares": {
     "dataSource": "researchds",
     "public": true
+  },
+  "RevistasCategorias": {
+    "dataSource": "researchds",
+    "public": true
   }
 }

@@ -291,6 +291,21 @@ CREATE TABLE `palabrasclave` (
   CONSTRAINT `fk_palabras_clave_palabra_clave1` FOREIGN KEY (`palabra_clave_id`) REFERENCES `palabraclave` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_palabras_clave_revista1` FOREIGN KEY (`revista_id`) REFERENCES `revista` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+DROP TABLE IF EXISTS `revistascategorias`;
+CREATE TABLE `revistascategorias` (
+  `categoria_id` int(11) NOT NULL,
+  `revista_id` int(11) NOT NULL,
+  PRIMARY KEY (`categoria_id`,`revista_id`),
+  KEY `fk_categoria_revista1_idx` (`categoria_id`),
+  KEY `fk_categoria_revista2_idx` (`revista_id`),
+
+  CONSTRAINT `fk_categoria_revista_c1` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_categoria_revista_c2` FOREIGN KEY (`revista_id`) REFERENCES `revista` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
