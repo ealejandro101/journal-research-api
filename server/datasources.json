@@ -5,11 +5,10 @@
   },
   "researchds": {
     "host": "localhost",
-    "port": 3306,
     "database": "researchdb",
     "password": "temporal",
     "name": "researchds",
-    "user": "research",
+    "user": "researchadmin",
     "connector": "mysql"
   }
 }
