@@ -11,33 +11,18 @@
     }
   },
   "properties": {
-    "ciudad": {
+    "name": {
       "type": "string",
       "required": true,
-      "length": 45,
+      "length": 30,
       "precision": null,
       "scale": null,
       "mysql": {
-        "columnName": "ciudad",
+        "columnName": "name",
         "dataType": "varchar",
-        "dataLength": 45,
+        "dataLength": 30,
         "dataPrecision": null,
         "dataScale": null,
-        "nullable": "N"
-      }
-    },
-    "estadoId": {
-      "type": "number",
-      "required": true,
-      "length": null,
-      "precision": 10,
-      "scale": 0,
-      "mysql": {
-        "columnName": "estado_id",
-        "dataType": "int",
-        "dataLength": null,
-        "dataPrecision": 10,
-        "dataScale": 0,
         "nullable": "N"
       }
     },
@@ -46,17 +31,33 @@
       "id": 1,
       "required": true,
       "length": null,
-      "precision": 10,
+      "precision": 11,
       "scale": 0,
       "mysql": {
         "columnName": "id",
         "dataType": "int",
         "dataLength": null,
-        "dataPrecision": 10,
+        "dataPrecision": 11,
         "dataScale": 0,
         "nullable": "N"
       },
       "updateOnly": false
+    },
+    "state_id": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 11,
+      "scale": 0,
+      "mysql": {
+        "columnName": "state_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 11,
+        "dataScale": 0,
+        "nullable": "N"
+      }
     }
   },
   "validations": [],

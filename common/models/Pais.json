@@ -16,28 +16,28 @@
       "id": 1,
       "required": true,
       "length": null,
-      "precision": 10,
+      "precision": 11,
       "scale": 0,
       "mysql": {
         "columnName": "id",
         "dataType": "int",
         "dataLength": null,
-        "dataPrecision": 10,
+        "dataPrecision": 11,
         "dataScale": 0,
         "nullable": "N"
       },
       "updateOnly": false
     },
-    "pais": {
+    "name": {
       "type": "string",
       "required": true,
-      "length": 45,
+      "length": 150,
       "precision": null,
       "scale": null,
       "mysql": {
-        "columnName": "pais",
+        "columnName": "name",
         "dataType": "varchar",
-        "dataLength": 45,
+        "dataLength": 150,
         "dataPrecision": null,
         "dataScale": null,
         "nullable": "N"

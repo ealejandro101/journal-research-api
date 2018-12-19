@@ -43,11 +43,11 @@
     "dataSource": "researchds",
     "public": true
   },
-  "Disciplina": {
+  "Estado": {
     "dataSource": "researchds",
     "public": true
   },
-  "Estado": {
+  "Disciplina": {
     "dataSource": "researchds",
     "public": true
   },
