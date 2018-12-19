@@ -5,10 +5,10 @@
   },
   "researchds": {
     "host": "localhost",
-    "database": "mybdresearch",
-    "password": "temporal",
+    "database": "jasoluti_researchdb",
+    "password": "research2018*",
     "name": "researchds",
-    "user": "researchadmin",
+    "user": "jasoluti_rh",
     "connector": "mysql"
   }
 }
