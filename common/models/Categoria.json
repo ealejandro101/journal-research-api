@@ -1,77 +1,74 @@
 {
-	"name": "Categoria",
-	"properties": {
-		"iconoG": {
-			"type": "string",
-			"required": true,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "icono_g",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		},
-		"iconoP": {
-			"type": "string",
-			"required": true,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "icono_p",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		},
-		"id": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"id": 1,
-			"mysql": {
-				"columnName": "id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			},
-			"updateOnly": false
-		},
-		"nombre": {
-			"type": "string",
-			"required": true,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "nombre",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		}
-	},
-	"settings": {
-		"strict": false,
-		"forceId": false,
-		"replaceOnPUT": true,
-		"idInjection": false,
-		"mysql": {
-			"schema": "researchdb",
-			"table": "categoria"
-		}
-	}
+    "name": "Categoria",
+    "properties": {
+        "iconoG": {
+            "type": "string",
+            "required": true,
+            "length": 45,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "icono_g",
+                "dataType": "VARCHAR",
+                "dataLength": 45,
+                "nullable": "N"
+            }
+        },
+        "iconoP": {
+            "type": "string",
+            "required": true,
+            "length": 45,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "icono_p",
+                "dataType": "VARCHAR",
+                "dataLength": 45,
+
+                "dataScale": null,
+                "nullable": "N"
+            }
+        },
+        "id": {
+            "type": "number",
+            "required": true,
+            "length": null,
+            "precision": 10,
+            "scale": 0,
+            "id": 1,
+            "mysql": {
+                "columnName": "id",
+                "dataType": "INT",
+                "dataPrecision": 10,
+                "dataScale": 0,
+                "nullable": "N"
+            },
+            "updateOnly": false
+        },
+        "nombre": {
+            "type": "string",
+            "required": true,
+            "length": 100,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "nombre",
+                "dataType": "VARCHAR",
+                "dataLength": 100,
+
+                "dataScale": null,
+                "nullable": "N"
+            }
+        }
+    },
+    "settings": {
+        "strict": false,
+        "forceId": false,
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "categoria"
+        }
+    }
 }

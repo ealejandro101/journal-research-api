@@ -1,107 +1,107 @@
 {
-	"name": "Rcontacto",
-	"properties": {
-		"editor": {
-			"type": "string",
-			"required": true,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "editor",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		},
-		"editorGooglescholar": {
-			"type": "string",
-			"required": false,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "editor_googlescholar",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"editorOrcid": {
-			"type": "string",
-			"required": false,
-			"length": 45,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "editor_orcid",
-				"dataType": "varchar",
-				"dataLength": 45,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"facultad": {
-			"type": "string",
-			"required": false,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "facultad",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "Y"
-			}
-		},
-		"id": {
-			"type": "number",
-			"required": true,
-			"length": null,
-			"precision": 10,
-			"scale": 0,
-			"id": 1,
-			"mysql": {
-				"columnName": "id",
-				"dataType": "int",
-				"dataLength": null,
-				"dataPrecision": 10,
-				"dataScale": 0,
-				"nullable": "N"
-			},
-			"updateOnly": false
-		},
-		"institucion": {
-			"type": "string",
-			"required": true,
-			"length": 100,
-			"precision": null,
-			"scale": null,
-			"mysql": {
-				"columnName": "institucion",
-				"dataType": "varchar",
-				"dataLength": 100,
-				"dataPrecision": null,
-				"dataScale": null,
-				"nullable": "N"
-			}
-		}
-	},
-	"settings": {
-		"strict": false,
-		"forceId": false,
-		"replaceOnPUT": true,
-		"idInjection": false,
-		"mysql": {
-			"schema": "researchdb",
-			"table": "rcontacto"
-		}
-	}
+    "name": "Rcontacto",
+    "properties": {
+        "editor": {
+            "type": "string",
+            "required": true,
+            "length": 100,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "editor",
+                "dataType": "VARCHAR",
+                "dataLength": 100,
+
+                "dataScale": null,
+                "nullable": "N"
+            }
+        },
+        "editorGooglescholar": {
+            "type": "string",
+            "required": false,
+            "length": 100,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "editor_googlescholar",
+                "dataType": "VARCHAR",
+                "dataLength": 100,
+
+                "dataScale": null,
+                "nullable": "Y"
+            }
+        },
+        "editorOrcid": {
+            "type": "string",
+            "required": false,
+            "length": 45,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "editor_orcid",
+                "dataType": "VARCHAR",
+                "dataLength": 45,
+
+                "dataScale": null,
+                "nullable": "Y"
+            }
+        },
+        "facultad": {
+            "type": "string",
+            "required": false,
+            "length": 100,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "facultad",
+                "dataType": "VARCHAR",
+                "dataLength": 100,
+
+                "dataScale": null,
+                "nullable": "Y"
+            }
+        },
+        "id": {
+            "type": "number",
+            "required": true,
+            "length": null,
+            "precision": 10,
+            "scale": 0,
+            "id": 1,
+            "mysql": {
+                "columnName": "id",
+                "dataType": "INT",
+                "dataLength": null,
+                "dataPrecision": 10,
+                "dataScale": 0,
+                "nullable": "N"
+            },
+            "updateOnly": false
+        },
+        "institucion": {
+            "type": "string",
+            "required": true,
+            "length": 100,
+            "precision": null,
+            "scale": null,
+            "mysql": {
+                "columnName": "institucion",
+                "dataType": "VARCHAR",
+                "dataLength": 100,
+
+                "dataScale": null,
+                "nullable": "N"
+            }
+        }
+    },
+    "settings": {
+        "strict": false,
+        "forceId": false,
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "rcontacto"
+        }
+    }
 }

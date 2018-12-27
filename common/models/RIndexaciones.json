@@ -10,7 +10,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "indexaciones_id",
-                "dataType": "int",
+                "dataType": "INT",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -26,7 +26,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "revista_id",
-                "dataType": "int",
+                "dataType": "INT",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -41,9 +41,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "parametro",
-                "dataType": "varchar",
+                "dataType": "VARCHAR",
                 "dataLength": 100,
-                "dataPrecision": null,
+
                 "dataScale": null,
                 "nullable": "N"
             }
