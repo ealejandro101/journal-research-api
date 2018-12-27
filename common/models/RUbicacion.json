@@ -1,5 +1,15 @@
 {
     "name": "Rubicacion",
+    "settings": {
+        "strict": false,
+        "forceId": false,
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "rubicacion"
+        }
+    },
     "properties": {
         "ciudadId": {
             "type": "number",
@@ -9,7 +19,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "ciudad_id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -24,23 +34,23 @@
             "scale": null,
             "mysql": {
                 "columnName": "direccion",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
         },
         "id": {
             "type": "number",
+            "id": 1,
             "required": true,
             "length": null,
             "precision": 10,
             "scale": 0,
-            "id": 1,
             "mysql": {
                 "columnName": "id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -56,9 +66,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "telefono",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 15,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -71,22 +81,16 @@
             "scale": null,
             "mysql": {
                 "columnName": "zipcode",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 15,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
         }
     },
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "rubicacion"
-        }
-    }
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
 }

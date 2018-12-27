@@ -1,21 +1,17 @@
 {
     "name": "Revista",
+    "settings": {
+        "strict": false,
+        "forceId": false,
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "revista"
+        }
+    },
     "properties": {
-        "categoriaId": {
-            "type": "number",
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "categoria_id",
-                "dataType": "INT",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        },
+
         "descripcion": {
             "type": "string",
             "required": false,
@@ -24,9 +20,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "descripcion",
-                "dataType": "VARCHAR",
+                "dataType": "mediumtext",
                 "dataLength": 16777215,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -39,9 +35,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "doi",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -54,53 +50,53 @@
             "scale": null,
             "mysql": {
                 "columnName": "eissn",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
         },
         "fechaCreacion": {
-            "type": "DATE",
+            "type": "date",
             "required": true,
             "length": null,
             "precision": null,
             "scale": null,
             "mysql": {
                 "columnName": "fecha_creacion",
-                "dataType": "DATE",
+                "dataType": "date",
                 "dataLength": null,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
         },
         "fechaIngreso": {
-            "type": "DATE",
+            "type": "date",
             "required": true,
             "length": null,
             "precision": null,
             "scale": null,
             "mysql": {
                 "columnName": "fecha_ingreso",
-                "dataType": "DATE",
+                "dataType": "date",
                 "dataLength": null,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
         },
         "id": {
             "type": "number",
+            "id": 1,
             "required": true,
             "length": null,
             "precision": 10,
             "scale": 0,
-            "id": 1,
             "mysql": {
                 "columnName": "id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -116,9 +112,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "imagen",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -131,9 +127,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "issn",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -146,7 +142,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "licencia_id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -161,9 +157,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "subtitulo",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -176,9 +172,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "titulo",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
@@ -191,22 +187,36 @@
             "scale": null,
             "mysql": {
                 "columnName": "titulo_corto",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
         }
     },
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "revista"
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {
+        "busqueda": {
+            "accepts": [{
+                "arg": "q",
+                "type": "string",
+                "required": true,
+                "description": "Cadena de caracter para buscar por diferentes campos"
+            }],
+            "returns": [{
+                "arg": "revistas",
+                "type": "object",
+                "root": false,
+                "description": "Lista de revistas que cumplen con el críterio"
+            }],
+            "description": "Retorna un listado de revistas que coinciden con la busqueda",
+            "http": [{
+                "path": "/busqueda",
+                "verb": "get"
+            }]
         }
     }
 }

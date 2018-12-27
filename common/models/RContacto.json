@@ -1,5 +1,15 @@
 {
     "name": "Rcontacto",
+    "settings": {
+        "strict": false,
+        "forceId": false,
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "rcontacto"
+        }
+    },
     "properties": {
         "editor": {
             "type": "string",
@@ -9,9 +19,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "editor",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
@@ -24,9 +34,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "editor_googlescholar",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -39,9 +49,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "editor_orcid",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -54,23 +64,23 @@
             "scale": null,
             "mysql": {
                 "columnName": "facultad",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
         },
         "id": {
             "type": "number",
+            "id": 1,
             "required": true,
             "length": null,
             "precision": 10,
             "scale": 0,
-            "id": 1,
             "mysql": {
                 "columnName": "id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -86,22 +96,16 @@
             "scale": null,
             "mysql": {
                 "columnName": "institucion",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
         }
     },
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "rcontacto"
-        }
-    }
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
 }

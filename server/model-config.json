@@ -1,118 +1,122 @@
 {
-	"_meta": {
-		"sources": [
-			"loopback/common/models",
-			"loopback/server/models",
-			"../common/models",
-			"./models"
-		],
-		"mixins": [
-			"loopback/common/mixins",
-			"loopback/server/mixins",
-			"../common/mixins",
-			"./mixins"
-		]
-	},
-	"User": {
-		"dataSource": "db"
-	},
-	"AccessToken": {
-		"dataSource": "db",
-		"public": false
-	},
-	"ACL": {
-		"dataSource": "db",
-		"public": false
-	},
-	"RoleMapping": {
-		"dataSource": "db",
-		"public": false,
-		"options": {
-			"strictObjectIDCoercion": true
-		}
-	},
-	"Role": {
-		"dataSource": "db",
-		"public": false
-	},
-	"Categoria": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Ciudad": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Disciplina": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Estado": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Estilocitacion": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Idioma": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Indexaciones": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Licencia": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Pais": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Palabraclave": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Palabrasclave": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Periodicidad": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Politicaautoarchivo": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Radicional": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Rcontacto": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Revista": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Ridiomas": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Rindexaciones": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Rubicacion": {
-		"dataSource": "researchds",
-		"public": true
-	},
-	"Tiporevisionpares": {
-		"dataSource": "researchds",
-		"public": true
-	}
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Categoria": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Ciudad": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Estado": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Disciplina": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Estilocitacion": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Idioma": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Indexaciones": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Licencia": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Pais": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Palabraclave": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Palabrasclave": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Periodicidad": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Politicaautoarchivo": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Radicional": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Rcontacto": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Revista": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Ridiomas": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Rindexaciones": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Rubicacion": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "Tiporevisionpares": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "RevistasCategorias": {
+    "dataSource": "researchds",
+    "public": true
+  }
 }

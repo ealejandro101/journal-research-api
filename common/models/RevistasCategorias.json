@@ -1,5 +1,5 @@
 {
-    "name": "Ridiomas",
+    "name": "RevistasCategorias",
     "settings": {
         "strict": false,
         "forceId": "auto",
@@ -7,7 +7,7 @@
         "idInjection": false,
         "mysql": {
             "schema": "researchdb",
-            "table": "ridiomas"
+            "table": "revistascategorias"
         }
     },
     "properties": {
@@ -19,16 +19,16 @@
             "precision": 10,
             "scale": 0,
             "mysql": {
-                "columnName": "id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
+              "columnName": "id",
+              "dataType": "int",
+              "dataLength": null,
+              "dataPrecision": 10,
+              "dataScale": 0,
+              "nullable": "N"
             },
             "updateOnly": false
-        },
-        "idiomaId": {
+          },
+        "categoriaId": {
             "type": "number",
             "id": 1,
             "required": true,
@@ -36,7 +36,7 @@
             "precision": 10,
             "scale": 0,
             "mysql": {
-                "columnName": "idioma_id",
+                "columnName": "categoria_id",
                 "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,

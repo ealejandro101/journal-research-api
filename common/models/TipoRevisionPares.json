@@ -1,16 +1,26 @@
 {
     "name": "Tiporevisionpares",
+    "settings": {
+        "strict": false,
+        "forceId": false,
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "tiporevisionpares"
+        }
+    },
     "properties": {
         "id": {
             "type": "number",
+            "id": 1,
             "required": true,
             "length": null,
             "precision": 10,
             "scale": 0,
-            "id": 1,
             "mysql": {
                 "columnName": "id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -26,22 +36,16 @@
             "scale": null,
             "mysql": {
                 "columnName": "tipo_revision_pares",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 15,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
         }
     },
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "tiporevisionpares"
-        }
-    }
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
 }

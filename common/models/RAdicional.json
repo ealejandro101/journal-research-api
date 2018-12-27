@@ -1,5 +1,15 @@
 {
     "name": "Radicional",
+    "settings": {
+        "strict": false,
+        "forceId": false,
+        "replaceOnPUT": true,
+        "idInjection": false,
+        "mysql": {
+            "schema": "researchdb",
+            "table": "radicional"
+        }
+    },
     "properties": {
         "apc": {
             "type": "number",
@@ -24,9 +34,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "codigo_etica",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
@@ -39,9 +49,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "correo",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
@@ -54,7 +64,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "disciplina_id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -69,7 +79,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "disciplina_id1",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -84,7 +94,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "disciplina_id2",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -99,7 +109,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "disciplina_id3",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -114,9 +124,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "equipo_editorial",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 145,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
@@ -129,7 +139,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "estilo_citacion_id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -144,9 +154,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "facebook",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -159,9 +169,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "googlescholar",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -174,23 +184,23 @@
             "scale": null,
             "mysql": {
                 "columnName": "guia_autores",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 145,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
         },
         "id": {
             "type": "number",
+            "id": 1,
             "required": true,
             "length": null,
             "precision": 10,
             "scale": 0,
-            "id": 1,
             "mysql": {
                 "columnName": "id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -206,9 +216,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "instagram",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -221,9 +231,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "oai",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
@@ -236,7 +246,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "periodicidad_id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -251,9 +261,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "periodicidad_otro",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 45,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -266,7 +276,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "politica_autoarchivo_id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -296,7 +306,7 @@
             "scale": 0,
             "mysql": {
                 "columnName": "tipo_revision_pares_id",
-                "dataType": "INT",
+                "dataType": "int",
                 "dataLength": null,
                 "dataPrecision": 10,
                 "dataScale": 0,
@@ -311,9 +321,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "twitter",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
@@ -326,9 +336,9 @@
             "scale": null,
             "mysql": {
                 "columnName": "url",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "N"
             }
@@ -341,22 +351,16 @@
             "scale": null,
             "mysql": {
                 "columnName": "videopresentacion",
-                "dataType": "VARCHAR",
+                "dataType": "varchar",
                 "dataLength": 100,
-
+                "dataPrecision": null,
                 "dataScale": null,
                 "nullable": "Y"
             }
         }
     },
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "radicional"
-        }
-    }
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
 }
