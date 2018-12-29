@@ -42,6 +42,20 @@
                 "dataScale": null,
                 "nullable": "N"
             }
+        }, "hayrevista":  {
+            "type": "number",
+            "required": true,
+            "length": null,
+            "precision": 3,
+            "scale": 0,
+            "mysql": {
+                "columnName": "hayrevista",
+                "dataType": "tinyint",
+                "dataLength": null,
+                "dataPrecision": 3,
+                "dataScale": 0,
+                "nullable": "N"
+            }
         }
     },
     "validations": [],
