@@ -196,7 +196,25 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "categorias": {
+            "type": "hasMany",
+            "model": "Categoria",
+            "foreignKey": "revistaId",
+            "through": "RevistasCategorias"
+        },
+        "plabrasclaves": {
+            "type": "hasMany",
+            "model": "Palabraclave",
+            "foreignKey": "revistaId",
+            "through": "Palabrasclave"
+        },
+        "revistaInfoAdicional": {
+            "type": "hasOne",
+            "model": "Radicional",
+            "foreignKey": "id"
+        }
+    },
     "acls": [],
     "methods": {
         "busqueda": {

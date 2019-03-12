@@ -45,7 +45,14 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "revistas": {
+            "type": "hasMany",
+            "model": "Revista",
+            "foreignKey": "palabraClaveId",
+            "through": "Palabrasclave"
+        }
+    },
     "acls": [],
     "methods": {}
 }

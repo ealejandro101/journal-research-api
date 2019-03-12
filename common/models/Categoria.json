@@ -75,7 +75,14 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "revistas": {
+            "type": "hasMany",
+            "model": "Revista",
+            "foreignKey": "categoriaId",
+            "through": "RevistasCategorias"
+        }
+    },
     "acls": [],
     "methods": {}
 }

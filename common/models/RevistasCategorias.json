@@ -62,7 +62,18 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "revista": {
+            "type": "belongsTo",
+            "model": "Revista",
+            "foreignKey": "revistaId"
+        },
+        "categoria": {
+            "type": "belongsTo",
+            "model": "Categoria",
+            "foreignKey": "categoriaId"
+        }
+    },
     "acls": [],
     "methods": {}
 }

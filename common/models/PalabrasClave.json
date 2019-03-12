@@ -62,7 +62,18 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "revistas": {
+            "type": "belongsTo",
+            "model": "Revista",
+            "foreignKey": "revistaId"
+        },
+        "palabrasclaves": {
+            "type": "belongsTo",
+            "model": "Palabraclave",
+            "foreignKey": "palabraClaveId"
+        }
+    },
     "acls": [],
     "methods": {}
 }

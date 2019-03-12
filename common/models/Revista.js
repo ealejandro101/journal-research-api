@@ -17,11 +17,9 @@ module.exports = function(Revista) {
         ]
       }
     };
-    console.log(filter);
     Revista.find(filter, function(err, instance) {
       revistas = instance;
       callback(null, revistas);
-      console.log(revistas);
     });
   };
 };
