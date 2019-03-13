@@ -1,0 +1,39 @@
+{
+    "include": [
+        {
+            "relation": "infoAdicional",
+            "scope": {
+                "fields": [
+                    "apc"
+                ],
+                "where": {
+                    "periodicidadId": 2
+                }
+            }
+        },
+        {
+            "relation": "owner",
+            "scope": {
+                "fields": ["username", "email"],
+                "include": [
+                    {
+                        "relation": "orders", 
+                        "scope": {
+                            "where": {"orderId": 5}
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "include": [
+        {
+            "relation": "infoAdicional",
+            "scope": {
+                "where": {
+                    "periodicidadId": 2
+                }
+            }
+        }
+    ]
+}

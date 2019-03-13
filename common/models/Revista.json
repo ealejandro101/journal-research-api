@@ -209,10 +209,31 @@
             "foreignKey": "revistaId",
             "through": "Palabrasclave"
         },
-        "revistaInfoAdicional": {
+        "infoAdicional": {
             "type": "hasOne",
             "model": "Radicional",
             "foreignKey": "id"
+        },
+        "contacto": {
+            "type": "hasOne",
+            "model": "Rcontacto",
+            "foreignKey": "id"
+        },
+        "ubicacion": {
+            "type": "hasOne",
+            "model": "Rubicacion",
+            "foreignKey": "id"
+        },
+        "indexaciones": {
+            "type": "hasMany",
+            "model": "Rindexaciones",
+            "foreignKey": "revistaId"
+        },
+        "idiomas": {
+            "type": "hasMany",
+            "model": "Idioma",
+            "foreignKey": "revistaId",
+            "through": "Ridiomas"
         }
     },
     "acls": [],

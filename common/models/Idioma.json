@@ -45,7 +45,14 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "idiomas": {
+            "type": "hasMany",
+            "model": "Revista",
+            "foreignKey": "idiomaId",
+            "through": "Ridiomas"
+        }
+    },
     "acls": [],
     "methods": {}
 }
