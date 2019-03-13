@@ -20,11 +20,12 @@ module.exports = function(Revista) {
       return format
     },
     isFormatValid (format, object){
+      let jsonObject = JSON.parse(JSON.stringify(object))
       for (const key in format) {
-        if(object[key] === undefined || object[key] === null){
+        if(jsonObject[key] === undefined || jsonObject[key] === null){
           return false
         }
-        if(!methods.isFormatValid(format[key], object[key])){
+        if(!methods.isFormatValid(format[key], jsonObject[key])){
           return false
         }
       }
@@ -56,7 +57,7 @@ module.exports = function(Revista) {
     if (Array.isArray(jsonFilter.include)) {
       jsonFormat = methods.returnFormat(jsonFilter)
     }
-    console.log("Formato de respuesta (Revista.js/Revista.filtrar): "+ jsonFormat);
+    console.log("Formato de respuesta (Revista.js/Revista.filtrar): "+ JSON.stringify(jsonFormat));
     Revista.find(jsonFilter, function(err, instance) {
       let response = []
       for (const iterator of instance) {
