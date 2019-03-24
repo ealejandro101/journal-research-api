@@ -4,20 +4,27 @@
             "relation": "infoAdicional",
             "scope": {
                 "where": {
-                    "periodicidadId": 2
-                }
-            }
-        },
-        {
-            "relation": "idiomas",
-            "scope": {
-                "where": {
-                    "or":[{"id":2}]
+                    "and": [
+                        {
+                            "or": [
+                                {
+                                    "apc": 0
+                                }
+                            ]
+                        },
+                        {
+                            "or": [
+                                {
+                                    "periodicidadId": 2
+                                },
+                                {
+                                    "periodicidadId": 4
+                                }
+                            ]
+                        }
+                    ]
                 }
             }
         }
-    ],
-    "where": {
-        "licenciaId": 1
-    }
+    ]
 }
