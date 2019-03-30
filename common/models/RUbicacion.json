@@ -90,7 +90,13 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "revista": {
+            "type": "hasOne",
+            "model": "Revista",
+            "foreignKey": "id"
+        }
+    },
     "acls": [],
     "methods": {}
 }

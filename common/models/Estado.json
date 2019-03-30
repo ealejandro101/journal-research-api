@@ -61,7 +61,13 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "ciudades": {
+            "type": "hasMany",
+            "model": "Ciudad",
+            "foreignKey": "state_id"
+        }
+    },
     "acls": [],
     "methods": {}
 }

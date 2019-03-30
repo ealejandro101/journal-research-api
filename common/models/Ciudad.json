@@ -61,7 +61,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "rubicaciones": {
+      "type": "hasMany",
+      "model": "Rubicacion",
+      "foreignKey": "ciudadId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

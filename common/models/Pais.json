@@ -59,7 +59,13 @@
         }
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "estados": {
+            "type": "hasMany",
+            "model": "Estado",
+            "foreignKey": "country_id"
+        }
+    },
     "acls": [],
     "methods": {}
 }
