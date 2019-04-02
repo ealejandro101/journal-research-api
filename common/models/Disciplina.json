@@ -45,7 +45,33 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "ciudades": {
+      "type": "hasMany",
+      "model": "Ciudad",
+      "foreignKey": "state_id"
+    },
+    "revistas0": {
+      "type": "hasMany",
+      "model": "Radicional",
+      "foreignKey": "disciplinaId"
+    },
+    "revistas1": {
+      "type": "hasMany",
+      "model": "Radicional",
+      "foreignKey": "disciplinaId1"
+    },
+    "revistas2": {
+      "type": "hasMany",
+      "model": "Radicional",
+      "foreignKey": "disciplinaId2"
+    },
+    "revistas3": {
+      "type": "hasMany",
+      "model": "Radicional",
+      "foreignKey": "disciplinaId3"
+    }
+  },
   "acls": [],
   "methods": {}
 }

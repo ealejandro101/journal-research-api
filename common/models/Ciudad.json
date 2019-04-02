@@ -66,6 +66,11 @@
       "type": "hasMany",
       "model": "Rubicacion",
       "foreignKey": "ciudadId"
+    },
+    "estado": {
+      "type": "belongsTo",
+      "model": "Estado",
+      "foreignKey": "state_id"
     }
   },
   "acls": [],

@@ -95,6 +95,11 @@
             "type": "hasOne",
             "model": "Revista",
             "foreignKey": "id"
+        },
+        "ciudad": {
+            "type": "belongsTo",
+            "model": "Ciudad",
+            "foreignKey": "ciudadId"
         }
     },
     "acls": [],

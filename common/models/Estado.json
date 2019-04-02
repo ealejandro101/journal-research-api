@@ -66,6 +66,11 @@
             "type": "hasMany",
             "model": "Ciudad",
             "foreignKey": "state_id"
+        },
+        "pais": {
+            "type": "belongsTo",
+            "model": "Pais",
+            "foreignKey": "country_id"
         }
     },
     "acls": [],
