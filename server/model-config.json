@@ -39,6 +39,10 @@
     "dataSource": "researchds",
     "public": true
   },
+  "Convocatoria": {
+    "dataSource": "researchds",
+    "public": true
+  },
   "Ciudad": {
     "dataSource": "researchds",
     "public": true

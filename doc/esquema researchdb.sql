@@ -11,6 +11,25 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema researchdb
 -- -----------------------------------------------------
 
+CREATE TABLE IF NOT EXISTS `convocatoria` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` TEXT NOT NULL,
+  `fecha_inicio` DATE NOT NULL,
+  `fecha_final` DATE NOT NULL,
+  `titulo` TEXT NOT NULL,
+  `imagen` TEXT NULL,
+  `video` TEXT NULL,
+  `ojs` TEXT NULL,
+  `documento_pdf` TEXT NULL,
+  `revistaId` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_convocatoria_revista`
+    FOREIGN KEY (`revistaId`)
+    REFERENCES `revista` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
 -- -----------------------------------------------------
 -- Schema researchdb
 -- -----------------------------------------------------

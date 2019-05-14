@@ -219,6 +219,11 @@
             "model": "Rcontacto",
             "foreignKey": "id"
         },
+        "convocatoria": {
+            "type": "hasMany",
+            "model": "Convocatoria",
+            "foreignKey": "revistaId"
+        },
         "ubicacion": {
             "type": "hasOne",
             "model": "Rubicacion",
