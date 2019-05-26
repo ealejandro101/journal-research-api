@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `convocatoria` (
   `titulo` TEXT NOT NULL,
   `imagen` TEXT NULL,
   `video` TEXT NULL,
-  `ojs` TEXT NULL,
+  `link` TEXT NULL,
   `documento_pdf` TEXT NULL,
   `revistaId` INT(11) NOT NULL,
   PRIMARY KEY (`id`),

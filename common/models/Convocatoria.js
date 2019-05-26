@@ -22,7 +22,7 @@ module.exports = function(Convocatoria) {
           "imagen": urlImg,
           "video": convocatoria.video,
           "documentoPdf": urlPdf,
-          "ojs": convocatoria.ojs,
+          "link": convocatoria.link,
           "revistaId": convocatoria.revistaId
         }, function (err, convocatoriaCreated) {
           if (err) {
@@ -61,7 +61,7 @@ module.exports = function(Convocatoria) {
           "imagen": urlImg,
           "video": convocatoria.video,
           "documentoPdf": null,
-          "ojs": convocatoria.ojs,
+          "link": convocatoria.link,
           "revistaId": convocatoria.revistaId
         }, function (err, convocatoriaCreated) {
           if (err) {
@@ -94,7 +94,7 @@ module.exports = function(Convocatoria) {
           "imagen": null,
           "video": convocatoria.video,
           "documentoPdf": urlPdf,
-          "ojs": convocatoria.ojs,
+          "link": convocatoria.link,
           "revistaId": convocatoria.revistaId
         }, function (err, convocatoriaCreated) {
           if (err) {
@@ -126,7 +126,7 @@ module.exports = function(Convocatoria) {
           "imagen": null,
           "video": convocatoria.video,
           "documentoPdf": null,
-          "ojs": convocatoria.ojs,
+          "link": convocatoria.link,
           "revistaId": convocatoria.revistaId
         }, function (err, data) {
           if (err) {

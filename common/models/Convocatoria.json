@@ -123,14 +123,14 @@
                 "nullable": "Y"
             }
         },
-        "ojs": {
+        "link": {
             "type": "String",
             "required": false,
             "length": 65535,
             "precision": null,
             "scale": null,
             "mysql": {
-                "columnName": "ojs",
+                "columnName": "link",
                 "dataType": "text",
                 "dataLength": 65535,
                 "dataPrecision": null,
@@ -159,6 +159,16 @@
         "revista": {
             "type": "belongsTo",
             "model": "Revista",
+            "foreignKey": "revistaId"
+        },
+        "radicional": {
+            "type": "belongsTo",
+            "model": "Radicional",
+            "foreignKey": "revistaId"
+        },
+        "contacto": {
+            "type": "belongsTo",
+            "model": "Rcontacto",
             "foreignKey": "revistaId"
         }
     },
