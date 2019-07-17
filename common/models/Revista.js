@@ -60,12 +60,118 @@ module.exports = function(Revista) {
 
   /* Realiza un filtro como Loopback v3 con include, solo que convierte la consulta "LEFT JOIN" a "JOIN" */
   Revista.filtrar = function(filtro, callback) {
+    let sentences = {
+      revista: {
+        sentence: ''
+      },
+      revistascategorias: {
+        sentence: 'revista.id = revistascategorias.revista_id'
+      },
+      convocatoria: {
+        sentence: 'revista.id = convocatoria.revistaId'
+      },
+      radicional: {
+        sentence: 'revista.id = radicional.id'
+      },
+      rcontacto: {
+        sentence: 'revista.id = rcontacto.id'
+      },
+      ridiomas: {
+        sentence: 'revista.id = ridiomas.revista_id'
+      },
+      rindexaciones: {
+        sentence: 'revista.id = rindexaciones.revista_id'
+      },
+      estado: {
+        sentence: 'revista.id = rubicacion.id AND ciudad.id = rubicacion.ciudad_id AND ciudad.state_id = estado.id',
+        models: [
+          'rubicacion', 'ciudad', 'estado'
+        ]
+      }
+    }
+    let baseSQL = 'SELECT DISTINCT revista.*'
+    let from = 'revista'
+    let where = ''
+    for (const iterator of filtro) {
+      if ((iterator.response && iterator.response.length > 0)  || (iterator.customQuery && iterator.customQuery.length > 0 ) ) {
+        //Se incluye la tabla del filtro en la query
+        if (Array.isArray(sentences[iterator.model].models)) {
+          for (const model of sentences[iterator.model].models) {
+            if (!from.includes(model)) {
+              from += `, ${model}`
+            }
+          }
+        }else if(!from.includes(iterator.model)) {
+          from += `, ${iterator.model}`
+        }
+        //Se incluye la sentencia where base para hacer el Join entre las tablas
+        if (!where.includes(sentences[iterator.model].sentence)) {
+          if (where.length != 0) {
+            where += ' AND '
+          }
+          where += sentences[iterator.model].sentence
+        }
+        if (iterator.response && iterator.response.length > 0) {//Si el filtro es sensillo
+          if (where.length != 0) {
+            where += ' AND '
+          }
+          where += ' ( '
+          for (const res of iterator.response) {
+            where += `${iterator.model}.${iterator.attribute} = ${res} OR  `
+          }
+          where = where.substring(0, where.length - 5)
+          where += ' ) '
+        }
+        if (iterator.customQuery && iterator.customQuery.length > 0) {//Si el filtro es personalizado
+          
+          
+          
+          if (where.length != 0) {
+            where += ' AND '
+          }
+          where += ' ( '
+          for (const res of iterator.customQuery) {
+            where += `${iterator.model}.${res.attribute} ${res.operator} ${res.value} ${res.isOr?'OR ':'AND'} `
+          }
+          where = where.substring(0, where.length - 5)
+          where += ' ) '
+        }
+      }
+    }
+    let query = baseSQL + ' FROM ' + from + (where?' WHERE ' + where:'')
+    console.log(query);
+    
+    Revista.dataSource.connector.execute(query, [] , function (err, data) {
+      if(data === undefined){
+        return callback(null, []);
+      }
+      callback(null, data);
+    } );
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Realiza un filtro como Loopback v3 con include, solo que convierte la consulta "LEFT JOIN" a "JOIN" */
+  Revista.filtrarOLD = function(filtro, callback) {
     let jsonFilter = JSON.parse(JSON.stringify(filtro))
     let jsonFormat = {}
     if (Array.isArray(jsonFilter.include)) {
       jsonFormat = methods.returnFormat(jsonFilter)
     }
-    // console.log("Formato de respuesta (Revista.js/Revista.filtrar): "+ JSON.stringify(jsonFormat));
     Revista.find(jsonFilter, function(err, instance) {
       let response = []
       for (const iterator of instance) {
@@ -74,7 +180,6 @@ module.exports = function(Revista) {
         }
       }
       revistas = response;
-
       callback(null, revistas);
     });
   };
@@ -83,6 +188,26 @@ module.exports = function(Revista) {
     'filtrar', {
       http: {
         path: '/filtrar',
+        verb: 'post'
+      },
+      accepts: [{
+        "arg": "filtro",
+        "type": "any",
+        "required": true,
+        "description": `El campo debe de tener un array`
+      }],
+      returns: {
+        arg: 'revistas',
+        type: 'object',
+        description: "Lista las revistas que cumplen estrictamente con la condición, incluye las condiciones de los modelos relacionados"
+      }
+    }
+  );
+
+  Revista.remoteMethod(
+    'filtrarOLD', {
+      http: {
+        path: '/filtrarOLD',
         verb: 'get'
       },
       accepts: [{
