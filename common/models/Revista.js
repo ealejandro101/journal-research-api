@@ -95,7 +95,10 @@ module.exports = function(Revista) {
         ]
       },
       palabrasclave: {
-        sentence: 'revista.id = palabrasclave.revista_id',
+        sentence: 'revista.id = palabrasclave.revista_id AND palabrasclave.palabra_clave_id = palabraclave.id',
+        models: [
+          'palabrasclave', 'palabraclave'
+        ]
       }
     }
     let baseSQL = 'SELECT DISTINCT revista.*'
@@ -144,7 +147,7 @@ module.exports = function(Revista) {
           }
           where += ' ( '
           for (const res of iterator.customQuery) {
-            where += `${iterator.model}.${res.attribute} ${res.operator} ${res.value} ${res.isOr?'OR ':'AND'} `
+            where += `${res.model?res.model:iterator.model}.${res.attribute} ${res.operator} ${res.value} ${res.isOr?'OR ':'AND'} `
           }
           where = where.substring(0, where.length - 5)
           where += ' ) '
