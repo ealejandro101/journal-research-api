@@ -35,6 +35,22 @@
     "dataSource": "db",
     "public": false
   },
+  "Editor": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "EditorPropietario": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "SuscripcionEditorCategoria": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "SuscripcionEditorRevista": {
+    "dataSource": "researchds",
+    "public": true
+  },
   "Categoria": {
     "dataSource": "researchds",
     "public": true

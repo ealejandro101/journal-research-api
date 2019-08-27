@@ -7,6 +7,78 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+CREATE TABLE IF NOT EXISTS `editorpropietario` ( 
+  `id` INT(11) NOT NULL, 
+  `editor_id` INT(11) NOT NULL, 
+  `revista_id` INT(11) NOT NULL, 
+  PRIMARY KEY (`id`), 
+  CONSTRAINT `fk_editorpropietario` FOREIGN KEY (`editor_id`) REFERENCES `editor` (`id`), 
+  CONSTRAINT `fk_revistapropietario` FOREIGN KEY (`revista_id`) REFERENCES `revista` (`id`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = latin1
+
+CREATE TABLE IF NOT EXISTS `suscripcion_editorrevista` (
+  `id` INT(11) NOT NULL,
+  `editor_id` INT(11) NOT NULL,
+  `revista_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_editorrevistasuscripcion`
+    FOREIGN KEY (`editor_id`)
+    REFERENCES `editor` (`id`),
+  CONSTRAINT `fk_revistaeditorsuscripcion`
+    FOREIGN KEY (`revista_id`)
+    REFERENCES `revista` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS `suscripcion_editorcategoria` (
+  `id` INT(11) NOT NULL,
+  `editor_id` INT(11) NOT NULL,
+  `categoria_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_editorcategoriasuscripcion`
+    FOREIGN KEY (`editor_id`)
+    REFERENCES `editor` (`id`),
+  CONSTRAINT `fk_categoriaeditorsuscripcion`
+    FOREIGN KEY (`categoria_id`)
+    REFERENCES `categoria` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+ALTER TABLE revista ADD esta_activa BOOLEAN NOT NULL DEFAULT TRUE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `editor` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` TEXT,
+  `profesion` VARCHAR(255) NOT NULL,
+  `edad` INT(3) NOT NULL,
+  `imagen` TEXT NULL,
+  `realm` TEXT NULL,
+  `username` TEXT NULL,
+  `name` TEXT NOT NULL,
+  `email` TEXT NOT NULL,
+  `password` TEXT NOT NULL,
+  `emailVerified` BOOLEAN NOT NULL,
+  `verificationToken` TEXT NULL,
+  `universidad` TEXT NULL,
+  `nivelAcademico` ENUM('Pregrado/Universitario','Especialización','Especialidad medica','MBA','Maestría/Magister','Doctorado','Pos-doctorado/Estancia pos-doctoral','Otro') NOT NULL,
+  `orcid` TEXT NULL AFTER `nivelAcademico`,
+  `googlescholar` TEXT NULL
+  PRIMARY KEY (`id`)
+)
+
 -- -----------------------------------------------------
 -- Schema researchdb
 -- -----------------------------------------------------
@@ -208,6 +280,7 @@ CREATE TABLE IF NOT EXISTS `researchdb`.`revista` (
   `imagen` VARCHAR(100) NULL DEFAULT NULL,
   `fecha_creacion` DATE NOT NULL,
   `fecha_ingreso` DATE NOT NULL,
+  `esta_activa` BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (`id`),
   INDEX `fk_revista_categoria1_idx` (`categoria_id` ASC),
   INDEX `fk_revista_licencia1_idx` (`licencia_id` ASC),

@@ -11,7 +11,22 @@
         }
     },
     "properties": {
-
+        "estaActiva": {
+            "type": "number",
+            "required": true,
+            "length": 1,
+            "precision": 10,
+            "scale": 0,
+            "mysql": {
+                "columnName": "esta_activa",
+                "dataType": "int",
+                "dataLength": null,
+                "dataPrecision": 10,
+                "dataScale": 0,
+                "nullable": "N"
+            },
+            "updateOnly": false
+        },
         "descripcion": {
             "type": "string",
             "required": false,
@@ -197,6 +212,12 @@
     },
     "validations": [],
     "relations": {
+        "editoresSuscritos": {
+            "type": "hasMany",
+            "model": "Editor",
+            "foreignKey": "revistaId",
+            "through": "SuscripcionEditorRevista"
+        },
         "categorias": {
             "type": "hasMany",
             "model": "Categoria",
