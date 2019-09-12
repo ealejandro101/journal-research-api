@@ -13,6 +13,9 @@
       "./mixins"
     ]
   },
+  "Email": {
+    "dataSource": "myEmailDataSource"
+  },
   "User": {
     "dataSource": "db"
   },
@@ -36,6 +39,13 @@
     "public": false
   },
   "Editor": {
+    "dataSource": "researchds",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "VerificationCode": {
     "dataSource": "researchds",
     "public": true
   },

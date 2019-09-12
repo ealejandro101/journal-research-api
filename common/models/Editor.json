@@ -38,20 +38,6 @@
                 "nullable": "N"
             }
         },
-        "edad": {
-            "type": "number",
-            "required": false,
-            "length": 3,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "edad",
-                "dataType": "number",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        },
         "imagen": {
             "type": "string",
             "required": false,

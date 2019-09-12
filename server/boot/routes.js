@@ -1,3 +1,5 @@
+let emailController =  require('./utilities/emailController.js')
+
 module.exports = function(app) {
     let Editor = app.models.Editor
     
@@ -66,4 +68,10 @@ module.exports = function(app) {
         })
         
     });
+
+    app.get('/custom/Editor/test', (req, res) => {
+        emailController.sendMail('danieladiazgomez97@gmail.com', 'Test', 'MSG Test').catch(console.error);
+        res.send(':D')
+    })
+
 }
