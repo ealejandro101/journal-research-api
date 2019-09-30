@@ -28,13 +28,9 @@ module.exports = function(app) {
             }).then(function (response) {
                 let editor = response[0]
                 console.log(editor.id);
-                
                 req.session.token = token.id;
                 req.session.identifier = editor.id
-                res.status(200).send({
-                    accessToken: token.id,
-                    editorId: editor.id
-                });
+                res.status(200).send(token);
             })
         })
     })
@@ -68,10 +64,4 @@ module.exports = function(app) {
         })
         
     });
-
-    app.get('/custom/Editor/test', (req, res) => {
-        emailController.sendMail('danieladiazgomez97@gmail.com', 'Test', 'MSG Test').catch(console.error);
-        res.send(':D')
-    })
-
 }
