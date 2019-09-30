@@ -188,7 +188,7 @@ module.exports = function (Editor) {
       let wordId = undefined
       await Editor.app.models.Palabraclave.find({
         where: {
-          palabraclave: iterator.trim()
+          palabraClave: iterator.trim()
         }
       }).then(response => {
         if (response.length > 0) {
@@ -197,6 +197,7 @@ module.exports = function (Editor) {
       })
       if (wordId === undefined) {
         await Editor.app.models.Palabraclave.create({
+          id: "",
           palabraClave: iterator.trim()
         }).then(res => {
           wordId = res.id

@@ -1,16 +1,15 @@
 {
   "db": {
-      "name": "db",
-      "connector": "memory"
+    "name": "db",
+    "connector": "memory"
   },
   "researchds": {
-      "host": "localhost",
-      "port": 3306,
-      "database": "jasoluti_researchdb",
-      "password": "research2018*",
-      "name": "researchds",
-      "user": "jasoluti_rh",
-      "connector": "mysql"
+    "host": "localhost",
+    "database": "jasoluti_researchdb",
+    "password": "",
+    "name": "researchds",
+    "user": "root",
+    "connector": "mysql"
   },
   "myEmailDataSource": {
     "connector": "mail",
