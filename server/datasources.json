@@ -4,15 +4,15 @@
       "connector": "memory"
   },
   "researchds": {
-      "host": "localhost",
-      "port": 3306,
-      "database": "jasoluti_researchdb",
-      "password": "research2018*",
-      "name": "researchds",
-      "user": "jasoluti_rh",
-      "connector": "mysql"
-  },
-"myEmailDataSource": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "jasoluti_researchdb",
+    "password": "research2018*",
+    "name": "researchds",
+    "user": "jasoluti_rh",
+    "connector": "mysql"
+},
+  "myEmailDataSource": {
   "connector": "mail",
   "transports": [{
     "type": "smtp",

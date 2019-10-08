@@ -41,7 +41,30 @@ module.exports = function(Revista) {
    * @param {Function(Error, object)} callback
    */
   Revista.busqueda = function(q, callback) {
-    var filter = {
+    if (q.length < 3) {
+      return callback(null, []);
+    }
+    let query = `
+      SELECT DISTINCT revista.* 
+      FROM revista 
+      WHERE 
+        revista.titulo LIKE "%${q}%" OR
+        revista.titulo_corto LIKE "%${q}%" OR
+        revista.subtitulo LIKE "%${q}%" OR
+        revista.descripcion LIKE "%${q}%"
+      ORDER BY CASE 
+        WHEN revista.titulo LIKE "${q.substr(0, 3)}%" then 1 
+        else 2
+      END
+        `
+    Revista.dataSource.connector.execute(query, [] , function (err, data) {
+      if(data === undefined){
+        return callback(null, []);
+      }
+      callback(null, data);
+    })
+    //OLD
+    /*var filter = {
       "where":{
         "or":
         [
@@ -55,7 +78,7 @@ module.exports = function(Revista) {
     Revista.find(filter, function(err, instance) {
       revistas = instance;
       callback(null, revistas);
-    });
+    });*/
   };
 
   /* Realiza un filtro como Loopback v3 con include, solo que convierte la consulta "LEFT JOIN" a "JOIN" */
