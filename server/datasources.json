@@ -5,12 +5,13 @@
   },
   "researchds": {
     "host": "localhost",
+    "port": 3306,
     "database": "jasoluti_researchdb",
-    "password": "",
-    "name": "jasoluti_researchdb",
-    "user": "root",
+    "password": "research2018*",
+    "name": "researchds",
+    "user": "jasoluti_rh",
     "connector": "mysql"
-  },
+},
   "myEmailDataSource": {
   "connector": "mail",
   "transports": [{
