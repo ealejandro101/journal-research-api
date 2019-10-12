@@ -166,6 +166,7 @@ module.exports = function (Editor) {
       currenError = error
       isError = true
     })
+
     if(isError){
       Editor.app.models.EditorPropietario.destroyAll({revistaId: journalId}).then(() => {
         Editor.app.models.Radicional.destroyAll({id: journalId}).then(() => {
@@ -231,6 +232,12 @@ module.exports = function (Editor) {
       })
       return callback(currenError)
     }
+    
+    await Editor.app.models.Pais.findById(rubicacion.paisId).then(pais => {
+      pais.updateAttributes({
+        "hayrevista": 1
+      })
+    })
     callback(null, {  state: true })
   };
   Editor.remoteMethod(

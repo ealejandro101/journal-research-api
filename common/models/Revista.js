@@ -126,7 +126,7 @@ module.exports = function(Revista) {
     }
     let baseSQL = 'SELECT DISTINCT revista.*'
     let from = 'revista'
-    let where = ''
+    let where = 'revista.esta_activa = 1'
     for (const iterator of filtro) {
       if ((iterator.response && iterator.response.length > 0)  || (iterator.customQuery && iterator.customQuery.length > 0 ) ) {
         //Se incluye la tabla del filtro en la query
