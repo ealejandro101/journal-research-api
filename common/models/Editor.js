@@ -3,7 +3,6 @@ module.exports = function (Editor) {
     var options = {
       type: 'email',
       to: user.email,
-      from: process.env.EMAIL_USERNAME,
       subject: 'Thanks for registering.',
       user: user,
       redirect: 'http://journals-research.com/#/Login',
