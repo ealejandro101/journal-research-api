@@ -3,6 +3,7 @@ module.exports = function (Editor) {
     var options = {
       type: 'email',
       to: user.email,
+      from: "dardocfp@gmail.com",
       subject: 'Thanks for registering.',
       user: user,
       redirect: 'http://journals-research.com/#/Login',
