@@ -1,6 +1,8 @@
 module.exports = function (Editor) {
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
+      host: 'http://journals-research.com',
+      port: 3000,
       type: 'email',
       to: user.email,
       from: "dardocfp@gmail.com",
