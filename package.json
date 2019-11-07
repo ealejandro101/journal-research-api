@@ -11,7 +11,7 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.4",
