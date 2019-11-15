@@ -1,51 +1,64 @@
 {
-    "name": "Estilocitacion",
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "estilocitacion"
-        }
+  "name": "Estilocitacion",
+  "settings": {
+    "strict": false,
+    "forceId": false,
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "researchdb",
+      "table": "estilocitacion"
+    }
+  },
+  "properties": {
+    "estiloCitacion": {
+      "type": "string",
+      "required": true,
+      "length": 15,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "estilo_citacion",
+        "dataType": "varchar",
+        "dataLength": 15,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
     },
-    "properties": {
-        "estiloCitacion": {
-            "type": "string",
-            "required": true,
-            "length": 15,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "estilo_citacion",
-                "dataType": "varchar",
-                "dataLength": 15,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        },
-        "id": {
-            "type": "number",
-            "id": 1,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            },
-            "updateOnly": false
-        }
+    "id": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     },
-    "validations": [],
-    "relations": {},
-    "acls": [],
-    "methods": {}
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
 }

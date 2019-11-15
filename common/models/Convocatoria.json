@@ -1,185 +1,195 @@
 {
-    "name": "Convocatoria",
-    "properties": {
-        "id": {
-            "type": "Number",
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "id": 1,
-            "mysql": {
-                "columnName": "id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            },
-            "updateOnly": false
-        },
-        "descripcion": {
-            "type": "String",
-            "required": true,
-            "length": 65535,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "descripcion",
-                "dataType": "text",
-                "dataLength": 65535,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        },
-        "fechaInicio": {
-            "type": "Date",
-            "required": true,
-            "length": null,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "fecha_inicio",
-                "dataType": "date",
-                "dataLength": null,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        },
-        "fechaFinal": {
-            "type": "Date",
-            "required": true,
-            "length": null,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "fecha_final",
-                "dataType": "date",
-                "dataLength": null,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        },
-        "titulo": {
-            "type": "String",
-            "required": false,
-            "length": 65535,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "titulo",
-                "dataType": "text",
-                "dataLength": 65535,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "imagen": {
-            "type": "String",
-            "required": false,
-            "length": 65535,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "imagen",
-                "dataType": "text",
-                "dataLength": 65535,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "video": {
-            "type": "String",
-            "required": false,
-            "length": 65535,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "video",
-                "dataType": "text",
-                "dataLength": 65535,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "documentoPdf": {
-            "type": "String",
-            "required": false,
-            "length": 65535,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "documento_pdf",
-                "dataType": "text",
-                "dataLength": 65535,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "link": {
-            "type": "String",
-            "required": false,
-            "length": 65535,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "link",
-                "dataType": "text",
-                "dataLength": 65535,
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "revistaId": {
-            "type": "number",
-            "id": 2,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "revistaId",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        }
-    },
-    "relations": {
-        "revista": {
-            "type": "belongsTo",
-            "model": "Revista",
-            "foreignKey": "revistaId"
-        },
-        "radicional": {
-            "type": "belongsTo",
-            "model": "Radicional",
-            "foreignKey": "revistaId"
-        },
-        "contacto": {
-            "type": "belongsTo",
-            "model": "Rcontacto",
-            "foreignKey": "revistaId"
-        }
-    },
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "jasoluti_researchdb",
-            "table": "convocatoria"
-        }
+  "name": "Convocatoria",
+  "settings": {
+    "strict": false,
+    "forceId": false,
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "jasoluti_researchdb",
+      "table": "convocatoria"
     }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "descripcion": {
+      "type": "String",
+      "required": true,
+      "length": 65535,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "descripcion",
+        "dataType": "text",
+        "dataLength": 65535,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "fechaInicio": {
+      "type": "Date",
+      "required": true,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "fecha_inicio",
+        "dataType": "date",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "fechaFinal": {
+      "type": "Date",
+      "required": true,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "fecha_final",
+        "dataType": "date",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "titulo": {
+      "type": "String",
+      "required": false,
+      "length": 65535,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "titulo",
+        "dataType": "text",
+        "dataLength": 65535,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "imagen": {
+      "type": "String",
+      "required": false,
+      "length": 65535,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "imagen",
+        "dataType": "text",
+        "dataLength": 65535,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "video": {
+      "type": "String",
+      "required": false,
+      "length": 65535,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "video",
+        "dataType": "text",
+        "dataLength": 65535,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "documentoPdf": {
+      "type": "String",
+      "required": false,
+      "length": 65535,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "documento_pdf",
+        "dataType": "text",
+        "dataLength": 65535,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "link": {
+      "type": "String",
+      "required": false,
+      "length": 65535,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "link",
+        "dataType": "text",
+        "dataLength": 65535,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "revistaId": {
+      "type": "number",
+      "id": 2,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "revistaId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "revista": {
+      "type": "belongsTo",
+      "model": "Revista",
+      "foreignKey": "revistaId"
+    },
+    "radicional": {
+      "type": "belongsTo",
+      "model": "Radicional",
+      "foreignKey": "revistaId"
+    },
+    "contacto": {
+      "type": "belongsTo",
+      "model": "Rcontacto",
+      "foreignKey": "revistaId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }

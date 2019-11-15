@@ -1,79 +1,86 @@
 {
-    "name": "Palabrasclave",
-    "settings": {
-        "strict": false,
-        "forceId": "auto",
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "palabrasclave"
-        }
+  "name": "Palabrasclave",
+  "settings": {
+    "strict": false,
+    "forceId": "auto",
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "researchdb",
+      "table": "palabrasclave"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
     },
-    "properties": {
-        "id": {
-            "type": "number",
-            "id": 1,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            },
-            "updateOnly": false
-        },
-        "palabraClaveId": {
-            "type": "number",
-            "id": 1,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "palabra_clave_id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        },
-        "revistaId": {
-            "type": "number",
-            "id": 2,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "revista_id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        }
+    "palabraClaveId": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "palabra_clave_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
     },
-    "validations": [],
-    "relations": {
-        "revistas": {
-            "type": "belongsTo",
-            "model": "Revista",
-            "foreignKey": "revistaId"
-        },
-        "palabrasclaves": {
-            "type": "belongsTo",
-            "model": "Palabraclave",
-            "foreignKey": "palabraClaveId"
-        }
+    "revistaId": {
+      "type": "number",
+      "id": 2,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "revista_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "revistas": {
+      "type": "belongsTo",
+      "model": "Revista",
+      "foreignKey": "revistaId"
     },
-    "acls": [],
-    "methods": {}
+    "palabraclave": {
+      "type": "belongsTo",
+      "model": "Palabraclave",
+      "foreignKey": "palabraClaveId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }

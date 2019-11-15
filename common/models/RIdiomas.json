@@ -1,79 +1,86 @@
 {
-    "name": "Ridiomas",
-    "settings": {
-        "strict": false,
-        "forceId": "auto",
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "ridiomas"
-        }
+  "name": "Ridiomas",
+  "settings": {
+    "strict": false,
+    "forceId": "auto",
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "researchdb",
+      "table": "ridiomas"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
     },
-    "properties": {
-        "id": {
-            "type": "number",
-            "id": 1,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            },
-            "updateOnly": false
-        },
-        "idiomaId": {
-            "type": "number",
-            "id": 1,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "idioma_id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        },
-        "revistaId": {
-            "type": "number",
-            "id": 2,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "revista_id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        }
+    "idiomaId": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "idioma_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
     },
-    "validations": [],
-    "relations": {
-        "revista": {
-            "type": "belongsTo",
-            "model": "Revista",
-            "foreignKey": "revistaId"
-        },
-        "idioma": {
-            "type": "belongsTo",
-            "model": "Idioma",
-            "foreignKey": "idiomaId"
-        }
+    "revistaId": {
+      "type": "number",
+      "id": 2,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "revista_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "revista": {
+      "type": "belongsTo",
+      "model": "Revista",
+      "foreignKey": "revistaId"
     },
-    "acls": [],
-    "methods": {}
+    "idioma": {
+      "type": "belongsTo",
+      "model": "Idioma",
+      "foreignKey": "idiomaId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }

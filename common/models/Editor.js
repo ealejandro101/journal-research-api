@@ -1,16 +1,20 @@
 module.exports = function (Editor) {
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
+      host: 'http://journals-research.com',
+      port: 3000,
       type: 'email',
       to: user.email,
-      from: process.env.EMAIL_USERNAME,
-      subject: 'Thanks for registering.',
+      from: "dardocfp@gmail.com",
+      subject: 'Thanks for registerings.',
       user: user,
       redirect: 'http://journals-research.com/#/Login',
     };
-
+    
+    
     user.verify(options, function (err, response) {
       if (err) {
+        console.log(err);
         Editor.deleteById(user.id);
         return next(err);
       }
@@ -184,53 +188,55 @@ module.exports = function (Editor) {
       return callback(currenError)
     }
 
-    let palabrasclave = []
-    for (const iterator of rpalabraclave.palabrasclave.split(';')) {
-      let wordId = undefined
-      await Editor.app.models.Palabraclave.find({
-        where: {
-          palabraClave: iterator.trim()
+    if (rpalabraclave.palabrasclave.length != 0) {
+      let palabrasclave = []
+      for (const iterator of rpalabraclave.palabrasclave.split(';')) {
+        let wordId = undefined
+        await Editor.app.models.Palabraclave.find({
+          where: {
+            palabraClave: iterator.trim()
+          }
+        }).then(response => {
+          if (response.length > 0) {
+            wordId = response[0].id
+          }
+        })
+        if (wordId === undefined) {
+          await Editor.app.models.Palabraclave.create({
+            id: "",
+            palabraClave: iterator.trim()
+          }).then(res => {
+            wordId = res.id
+          })
         }
-      }).then(response => {
-        if (response.length > 0) {
-          wordId = response[0].id
-        }
-      })
-      if (wordId === undefined) {
-        await Editor.app.models.Palabraclave.create({
-          id: "",
-          palabraClave: iterator.trim()
-        }).then(res => {
-          wordId = res.id
+        palabrasclave.push({
+          "id": "",
+          "palabraClaveId": wordId,
+          "revistaId": journalId
         })
       }
-      palabrasclave.push({
-        "id": "",
-        "palabraClaveId": wordId,
-        "revistaId": journalId
+      await Editor.app.models.Palabrasclave.create(palabrasclave).catch(error => {
+        currenError = error
+        isError = true
       })
-    }
-    await Editor.app.models.Palabrasclave.create(palabrasclave).catch(error => {
-      currenError = error
-      isError = true
-    })
-    if(isError){
-      Editor.app.models.EditorPropietario.destroyAll({revistaId: journalId}).then(() => {
-        Editor.app.models.Radicional.destroyById(journalId).then(() => {
-          Editor.app.models.Rcontacto.destroyById(journalId).then(() => {
-            Editor.app.models.Rubicacion.destroyById(journalId).then(() => {
-              Editor.app.models.RevistasCategorias.destroyAll({revistaId: journalId}).then(() => {
-                Editor.app.models.Ridiomas.destroyAll({revistaId: journalId}).then(() => {
-                  Editor.app.models.Rindexaciones.destroyAll({revistaId: journalId}).then(() => {
-                    Editor.app.models.Revista.destroyById(journalId)
+      if(isError){
+        Editor.app.models.EditorPropietario.destroyAll({revistaId: journalId}).then(() => {
+          Editor.app.models.Radicional.destroyById(journalId).then(() => {
+            Editor.app.models.Rcontacto.destroyById(journalId).then(() => {
+              Editor.app.models.Rubicacion.destroyById(journalId).then(() => {
+                Editor.app.models.RevistasCategorias.destroyAll({revistaId: journalId}).then(() => {
+                  Editor.app.models.Ridiomas.destroyAll({revistaId: journalId}).then(() => {
+                    Editor.app.models.Rindexaciones.destroyAll({revistaId: journalId}).then(() => {
+                      Editor.app.models.Revista.destroyById(journalId)
+                    })
                   })
                 })
               })
             })
           })
         })
-      })
-      return callback(currenError)
+        return callback(currenError)
+      }
     }
     
     await Editor.app.models.Pais.findById(rubicacion.paisId).then(pais => {

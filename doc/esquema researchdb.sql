@@ -7,6 +7,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+UPDATE `indexaciones` SET `indexaciones` = 'SJR' WHERE `indexaciones`.`id` = 2;
+UPDATE `indexaciones` SET `indexaciones` = 'WoS' WHERE `indexaciones`.`id` = 1;
 ALTER TABLE `revista` CHANGE `descripcion` `descripcion` MEDIUMTEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
 --------------------------
 

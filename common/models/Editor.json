@@ -1,139 +1,144 @@
 {
-    "name": "Editor",
-    "base": "User",
-    "settings": {
-        "strict": false,
-        "forceId": false,
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "revista"
-        }
-    },
-    "properties": {
-        "name": {
-            "type": "string",
-            "required": false,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "name",
-                "dataType": "text",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        },
-        "profesion": {
-            "type": "string",
-            "required": false,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "profesion",
-                "dataType": "text",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        },
-        "imagen": {
-            "type": "string",
-            "required": false,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "imagen",
-                "dataType": "text",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "universidad": {
-            "type": "string",
-            "required": false,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "universidad",
-                "dataType": "text",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "orcid": {
-            "type": "string",
-            "required": false,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "orcid",
-                "dataType": "text",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "googlescholar": {
-            "type": "string",
-            "required": false,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "googlescholar",
-                "dataType": "text",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "Y"
-            }
-        },
-        "nivelAcademico": {
-            "type": "string",
-            "required": false,
-            "precision": null,
-            "scale": null,
-            "mysql": {
-                "columnName": "nivelAcademico",
-                "dataType": "text",
-                "dataPrecision": null,
-                "dataScale": null,
-                "nullable": "N"
-            }
-        }
-    },
-    "validations": [],
-    "relations": {
-        "categoriasSuscritas": {
-            "type": "hasMany",
-            "model": "Categoria",
-            "foreignKey": "editorId",
-            "through": "SuscripcionEditorCategoria"
-        },
-        "revistasSuscritas": {
-            "type": "hasMany",
-            "model": "Revista",
-            "foreignKey": "editorId",
-            "through": "SuscripcionEditorRevista"
-        },
-        "propietarioRevista": {
-            "type": "hasMany",
-            "model": "Revista",
-            "foreignKey": "editorId",
-            "through": "EditorPropietario"
-        }
-    },
-    "acls": [
-        {
-            "accessType": "*",
-            "property": "*",
-            "principalType": "ROLE",
-            "principalId": "$owner",
-            "permission": "ALLOW"
-          }
-    ],
-    "methods": {
+  "name": "Editor",
+  "base": "User",
+  "settings": {
+    "strict": false,
+    "forceId": false,
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "researchdb",
+      "table": "revista"
     }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": false,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "name",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "profesion": {
+      "type": "string",
+      "required": false,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "profesion",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "imagen": {
+      "type": "string",
+      "required": false,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "imagen",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "universidad": {
+      "type": "string",
+      "required": false,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "universidad",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "orcid": {
+      "type": "string",
+      "required": false,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "orcid",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "googlescholar": {
+      "type": "string",
+      "required": false,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "googlescholar",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "nivelAcademico": {
+      "type": "string",
+      "required": false,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "nivelAcademico",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "categoriasSuscritas": {
+      "type": "hasMany",
+      "model": "Categoria",
+      "foreignKey": "editorId",
+      "through": "SuscripcionEditorCategoria"
+    },
+    "revistasSuscritas": {
+      "type": "hasMany",
+      "model": "Revista",
+      "foreignKey": "editorId",
+      "through": "SuscripcionEditorRevista"
+    },
+    "propietarioRevista": {
+      "type": "hasMany",
+      "model": "Revista",
+      "foreignKey": "editorId",
+      "through": "EditorPropietario"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
 }

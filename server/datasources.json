@@ -1,28 +1,30 @@
 {
   "db": {
-      "name": "db",
-      "connector": "memory"
+    "name": "db",
+    "connector": "memory"
   },
   "researchds": {
     "host": "localhost",
-    "port": 3306,
     "database": "jasoluti_researchdb",
-    "password": "research2018*",
+    "password": "",
     "name": "researchds",
-    "user": "jasoluti_rh",
+    "user": "root",
     "connector": "mysql"
-},
+  },
   "myEmailDataSource": {
-  "connector": "mail",
-  "transports": [{
-    "type": "smtp",
-    "host": "smtp.gmail.com",
-    "secure": true,
-    "port": 465,
-    "auth": {
-      "user": "dardocfp@gmail.com",
-      "pass": "revdardo@*"
-    }
-  }]
-}
+    "name": "myEmailDataSource",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "dardocfp@gmail.com",
+          "pass": "revdardo@*"
+        }
+      }
+    ]
+  }
 }

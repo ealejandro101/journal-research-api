@@ -2,6 +2,8 @@ let emailController =  require('./utilities/emailController.js')
 
 module.exports = function(app) {
     let Editor = app.models.Editor
+    let Role = app.models.Role;
+    let RoleMapping = app.models.RoleMapping;
     
     let sessionChecker = (req, res, next) => {
         if (!req.session.token) {
@@ -64,4 +66,12 @@ module.exports = function(app) {
         })
         
     });
+
+    app.get('/custom/Roles/isAdmin', sessionChecker, function(req, res){
+        Role.isInRole('admin', {principalType: RoleMapping.USER, principalId: req.session.identifier}, function(err, isInRole) {
+            res.status(200).send({
+                isInRole
+            })
+        });
+    })
 }

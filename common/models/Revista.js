@@ -189,21 +189,6 @@ module.exports = function(Revista) {
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /* Realiza un filtro como Loopback v3 con include, solo que convierte la consulta "LEFT JOIN" a "JOIN" */
   Revista.filtrarOLD = function(filtro, callback) {
     let jsonFilter = JSON.parse(JSON.stringify(filtro))
@@ -222,6 +207,190 @@ module.exports = function(Revista) {
       callback(null, revistas);
     });
   };
+
+  Revista.updateFullJournal = async function(revistaId, models, callback) {
+    let revista = models.revista
+    let radicional = models.radicional
+    let rcontactos = models.rcontactos
+    let rubicacion = models.rubicacion
+    let ridiomas = models.ridiomas
+    let rindexaciones = models.rindexaciones
+    let revistascategorias = models.revistascategorias
+    let rpalabraclave = models.rpalabraclave
+    let isError = false
+    let currenError = undefined
+
+
+    revista.fechaCreacion = (new Date(new Date().setFullYear(revista.fechaCreacion))).toISOString()
+    revista.fechaIngreso = new Date().toISOString()
+
+    await Revista.app.models.Revista.replaceById(revistaId, revista).then(response => {
+      revistaId = response.id
+    }).catch(error => {
+      currenError = error
+      isError = true
+    })
+    if(isError) return callback(currenError)
+
+    radicional.id = revistaId
+    await Revista.app.models.Radicional.replaceById(revistaId, radicional).catch(error => {
+      currenError = error
+      isError = true
+    })
+    if(isError){
+      return callback(currenError)
+    }
+
+    rcontactos.id = revistaId
+    await Revista.app.models.Rcontacto.replaceById(revistaId, rcontactos).catch(error => {
+      currenError = error
+      isError = true
+    })
+    if(isError){
+      return callback(currenError)
+    }
+
+    rubicacion.id = revistaId
+    await Revista.app.models.Rubicacion.replaceById(revistaId, rubicacion).catch(error => {
+      currenError = error
+      isError = true
+    })
+    if(isError){
+      return callback(currenError)
+    }
+
+    let categories = []
+    for (const categoriaId of revistascategorias.categories) {
+      categories.push({
+        "id": "",
+        "categoriaId": categoriaId,
+        "revistaId": revistaId
+      })
+    }
+
+    await Revista.app.models.RevistasCategorias.destroyAll({
+      revistaId: revistaId
+    })
+    await Revista.app.models.RevistasCategorias.create(categories).catch(error => {
+      currenError = error
+      isError = true
+    })
+    if(isError){
+      return callback(currenError)
+    }
+
+    let idiomas = []
+    for (const idiomaId of ridiomas.idiomas) {
+      idiomas.push({
+        "id": "",
+        "idiomaId": idiomaId,
+        "revistaId": revistaId
+      })
+    }
+    await Revista.app.models.Ridiomas.destroyAll({
+      revistaId: revistaId
+    })
+    await Revista.app.models.Ridiomas.create(idiomas).catch(error => {
+      currenError = error
+      isError = true
+    })
+    if(isError){
+      return callback(currenError)
+    }
+
+    let indexaciones = []
+    for (const indexacionId of rindexaciones.indexaciones) {
+      indexaciones.push({
+        "id": "",
+        "indexacionesId": indexacionId,
+        "revistaId": revistaId,
+        "parametro": rindexaciones[`parameter-${indexacionId}`]
+      })
+    }
+    await Revista.app.models.Rindexaciones.destroyAll({
+      revistaId: revistaId
+    })
+    await Revista.app.models.Rindexaciones.create(indexaciones).catch(error => {
+      currenError = error
+      isError = true
+    })
+    if(isError){
+      return callback(currenError)
+    }
+
+    if (rpalabraclave.palabrasclave.length != 0) {
+      let palabrasclave = []
+      for (const iterator of rpalabraclave.palabrasclave.split(';')) {
+        let wordId = undefined
+        await Revista.app.models.Palabraclave.find({
+          where: {
+            palabraClave: iterator.trim()
+          }
+        }).then(response => {
+          if (response.length > 0) {
+            wordId = response[0].id
+          }
+        })
+        if (wordId === undefined) {
+          await Revista.app.models.Palabraclave.replaceById(revistaId, {
+            id: "",
+            palabraClave: iterator.trim()
+          }).then(res => {
+            wordId = res.id
+          })
+        }
+        palabrasclave.push({
+          "id": "",
+          "palabraClaveId": wordId,
+          "revistaId": revistaId
+        })
+      }
+      await Revista.app.models.Palabrasclave.destroyAll({
+        revistaId: revistaId
+      })
+      await Revista.app.models.Palabrasclave.create(palabrasclave).catch(error => {
+        currenError = error
+        isError = true
+      })
+      if(isError){
+        return callback(currenError)
+      }
+    }
+
+    await Revista.app.models.Pais.findById(rubicacion.paisId).then(pais => {
+      pais.updateAttributes({
+        "hayrevista": 1
+      })
+    })
+    callback(null, {  state: true })
+  };
+  Revista.remoteMethod(
+    'updateFullJournal', {
+      accepts: [
+        {
+          "arg": "revistaId",
+          "type": "number",
+          "required": true,
+          "description": `Joyrnal id`
+        },
+        {
+        "arg": "models",
+        "type": "any",
+        "required": true,
+        "description": `JSON con todos los models necesarios para insertar una revista completa`
+        }
+      ],
+      http: {
+        path: '/:revistaId/updateFullJournal',
+        verb: 'post'
+      },
+      returns: {
+        arg: 'state',
+        type: 'object',
+        description: "Establece si se realizo la insercion correctamente"
+      }
+    }
+  );
 
   Revista.remoteMethod(
     'filtrar', {

@@ -1,79 +1,86 @@
 {
-    "name": "VerificationCode",
-    "settings": {
-        "strict": false,
-        "forceId": "auto",
-        "replaceOnPUT": true,
-        "idInjection": false,
-        "mysql": {
-            "schema": "researchdb",
-            "table": "verificationcode"
-        }
+  "name": "VerificationCode",
+  "settings": {
+    "strict": false,
+    "forceId": "auto",
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "researchdb",
+      "table": "verificationcode"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
     },
-    "properties": {
-        "id": {
-            "type": "number",
-            "id": 1,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "id",
-                "dataType": "int",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            },
-            "updateOnly": false
-        },
-        "code": {
-            "type": "string",
-            "id": 1,
-            "required": true,
-            "length": null,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "code",
-                "dataType": "text",
-                "dataLength": null,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        },
-        "type": {
-            "type": "string",
-            "id": 2,
-            "required": true,
-            "length": 255,
-            "precision": 10,
-            "scale": 0,
-            "mysql": {
-                "columnName": "type",
-                "dataType": "varchar",
-                "dataLength": 255,
-                "dataPrecision": 10,
-                "dataScale": 0,
-                "nullable": "N"
-            }
-        }
+    "code": {
+      "type": "string",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "code",
+        "dataType": "text",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
     },
-    "validations": [],
-    "relations": {
-        "revista": {
-            "type": "belongsTo",
-            "model": "Revista",
-            "foreignKey": "revistaId"
-        },
-        "idioma": {
-            "type": "belongsTo",
-            "model": "Idioma",
-            "foreignKey": "idiomaId"
-        }
+    "type": {
+      "type": "string",
+      "id": 2,
+      "required": true,
+      "length": 255,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "type",
+        "dataType": "varchar",
+        "dataLength": 255,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "revista": {
+      "type": "belongsTo",
+      "model": "Revista",
+      "foreignKey": "revistaId"
     },
-    "acls": [],
-    "methods": {}
+    "idioma": {
+      "type": "belongsTo",
+      "model": "Idioma",
+      "foreignKey": "idiomaId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }
