@@ -28,6 +28,22 @@
       },
       "updateOnly": false
     },
+    "estado": {
+      "type": "Number",
+      "required": true,
+      "length": 2,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "estado",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
     "descripcion": {
       "type": "String",
       "required": true,

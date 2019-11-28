@@ -48,10 +48,11 @@ module.exports = function(Revista) {
       SELECT DISTINCT revista.* 
       FROM revista 
       WHERE 
+        revista.esta_activa = 1 AND (
         revista.titulo LIKE "%${q}%" OR
         revista.titulo_corto LIKE "%${q}%" OR
         revista.subtitulo LIKE "%${q}%" OR
-        revista.descripcion LIKE "%${q}%"
+        revista.descripcion LIKE "%${q}%")
       ORDER BY CASE 
         WHEN revista.titulo LIKE "${q.substr(0, 3)}%" then 1 
         else 2
@@ -317,7 +318,6 @@ module.exports = function(Revista) {
     if(isError){
       return callback(currenError)
     }
-
     if (rpalabraclave.palabrasclave.length != 0) {
       let palabrasclave = []
       for (const iterator of rpalabraclave.palabrasclave.split(';')) {

@@ -10,8 +10,14 @@ module.exports = function(Convocatoria) {
      * @param {Function(Error, object)} callback
      */
     Convocatoria.add = function(convocatoria, callback) {
-      let urlImg = `convocatorias/${convocatoria.revistaId}/convocatoriaId/image.`+convocatoria.imagen.substring(convocatoria.imagen.indexOf('/') + 1, convocatoria.imagen.indexOf(';base64'))
-      let urlPdf = `convocatorias/${convocatoria.revistaId}/convocatoriaId/doc.`+convocatoria.documentoPdf.substring(convocatoria.documentoPdf.indexOf('/') + 1, convocatoria.documentoPdf.indexOf(';base64'))
+      let urlImg = null
+      let urlPdf = null
+      if (convocatoria.imagen) {
+        urlImg = `convocatorias/${convocatoria.revistaId}/convocatoriaId/image.`+convocatoria.imagen.substring(convocatoria.imagen.indexOf('/') + 1, convocatoria.imagen.indexOf(';base64'))
+      }
+      if (convocatoria.documentoPdf) {
+        urlPdf = `convocatorias/${convocatoria.revistaId}/convocatoriaId/doc.`+convocatoria.documentoPdf.substring(convocatoria.documentoPdf.indexOf('/') + 1, convocatoria.documentoPdf.indexOf(';base64'))
+      }
       if (convocatoria.imagen && convocatoria.documentoPdf) {
         Convocatoria.upsert({
           "id": convocatoria.id,
@@ -23,7 +29,8 @@ module.exports = function(Convocatoria) {
           "video": convocatoria.video,
           "documentoPdf": urlPdf,
           "link": convocatoria.link,
-          "revistaId": convocatoria.revistaId
+          "revistaId": convocatoria.revistaId,
+          "estado": 0
         }, function (err, convocatoriaCreated) {
           if (err) {
             console.log(err);
@@ -146,7 +153,7 @@ module.exports = function(Convocatoria) {
           verb: 'post'
         },
         accepts: [{
-          "arg": "Convocatoria",
+          "arg": "convocatoria",
           "type": "Object",
           "required": true,
           "description": ``
