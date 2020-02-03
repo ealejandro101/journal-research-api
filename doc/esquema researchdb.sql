@@ -7,8 +7,34 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+CREATE TABLE IF NOT EXISTS `estadisticasconvocatoria` ( 
+  `id` INT(11) NOT NULL, 
+  `nroVisitas` INT(4) NOT NULL, 
+  `clicksConvocatoria` INT(4) NOT NULL,
+  `descargasPdf` INT(4) NOT NULL,
+  `clicksCorreo` INT(4) NOT NULL,
+  `clicksSitioweb` INT(4) NOT NULL,
+  `clicksGuiaAutores` INT(4) NOT NULL,
+  PRIMARY KEY (`id`), 
+  CONSTRAINT `fk_estadisticasconvocatoria` FOREIGN KEY (`id`) REFERENCES `convocatoria` (`id`)
+) CHARACTER SET = latin1
 
+CREATE TABLE IF NOT EXISTS `estadisticasrevista` ( 
+  `id` INT(11) NOT NULL AUTO_INCREMENT, 
+  `revistaId` INT(11) NOT NULL, 
+  `periodo` TEXT NOT NULL,
+  `nroVisitas` INT(4) NOT NULL, 
+  `clicksIndexaciones` INT(4) NOT NULL, 
+  `clicksDoi` INT(4) NOT NULL, 
+  `clicksCorreo` INT(4) NOT NULL,
+  `clicksSitioweb` INT(4) NOT NULL,
+  `clicksGuiaAutores` INT(4) NOT NULL,
+  `clicksRedes` INT(4)NOT NULL,
+  PRIMARY KEY (`id`), 
+  CONSTRAINT `fk_estadisticasrevista` FOREIGN KEY (`revistaId`) REFERENCES `revista` (`id`)
+) CHARACTER SET = latin1
 
+ALTER TABLE `radicional` ADD `crossref` TEXT NULL AFTER `tiempo_promedio_publicacion`;
 --Actual--------------------------
 ALTER TABLE `convocatoria` ADD `estado` INT(2) NULL DEFAULT '1' AFTER `revistaId`;
 UPDATE `indexaciones` SET `indexaciones` = 'SJR' WHERE `indexaciones`.`id` = 2;

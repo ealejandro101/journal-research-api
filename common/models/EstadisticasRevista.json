@@ -1,0 +1,192 @@
+{
+  "name": "EstadisticasRevista",
+  "settings": {
+    "strict": false,
+    "forceId": false,
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "jasoluti_researchdb",
+      "table": "estadisticasrevista"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "revistaId": {
+      "type": "number",
+      "id": 2,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "revistaId",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "periodo": {
+      "type": "String",
+      "required": true,
+      "length": 100,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "periodo",
+        "dataType": "text",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
+    "nroVisitas": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "nroVisitas",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksIndexaciones": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksIndexaciones",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksDoi": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksDoi",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksCorreo": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksCorreo",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksSitioweb": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksSitioweb",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksGuiaAutores": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksGuiaAutores",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksRedes": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksRedes",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "revista": {
+      "type": "belongsTo",
+      "model": "Revista",
+      "foreignKey": "revistaId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

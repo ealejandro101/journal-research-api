@@ -148,5 +148,13 @@
   "RevistasCategorias": {
     "dataSource": "researchds",
     "public": true
+  },
+  "EstadisticasRevista": {
+    "dataSource": "researchds",
+    "public": true
+  },
+  "EstadisticasConvocatoria": {
+    "dataSource": "researchds",
+    "public": true
   }
 }

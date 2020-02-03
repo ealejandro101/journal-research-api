@@ -1,0 +1,145 @@
+{
+  "name": "EstadisticasConvocatoria",
+  "settings": {
+    "strict": false,
+    "forceId": false,
+    "replaceOnPUT": true,
+    "idInjection": false,
+    "mysql": {
+      "schema": "jasoluti_researchdb",
+      "table": "estadisticasconvocatoria"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "nroVisitas": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "nroVisitas",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksConvocatoria": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksConvocatoria",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "descargasPdf": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "descargasPdf",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksCorreo": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksCorreo",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksSitioweb": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksSitioweb",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    },
+    "clicksGuiaAutores": {
+      "type": "Number",
+      "required": true,
+      "length": 4,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "clicksGuiaAutores",
+        "dataType": "int",
+        "dataLength": 4,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      },
+      "updateOnly": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "convocatoria": {
+      "type": "belongsTo",
+      "model": "Convocatoria",
+      "foreignKey": "id"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

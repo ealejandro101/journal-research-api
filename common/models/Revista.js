@@ -1,3 +1,7 @@
+let axios = require("axios");
+let convert = require('xml-js');
+let crossrefTools =  require('./../../server/tools/crossref.js')
+
 module.exports = function(Revista) {
   let methods = {
     /* Segun el SCOPE segun la documentacion de LoopBack v3, retorna el formato que debe de tener cada
@@ -233,6 +237,7 @@ module.exports = function(Revista) {
     })
     if(isError) return callback(currenError)
 
+    
     radicional.id = revistaId
     await Revista.app.models.Radicional.replaceById(revistaId, radicional).catch(error => {
       currenError = error
@@ -364,6 +369,99 @@ module.exports = function(Revista) {
     })
     callback(null, {  state: true })
   };
+
+  Revista.hasCrossref = function(journalId, callback) {
+    Revista.app.models.Radicional.findById(journalId).then(radicional => {
+      let crossref = radicional.crossref
+      if (!crossref) {
+        return callback(null, false)
+      }
+      return callback(null, true)
+    })
+  }
+
+  Revista.getArticles = function(journalId, dateRange, callback) {
+    if (!dateRange.startDate || !dateRange.endDate) {
+      return callback(true, { error: 'El rango de fechas ingresado no es valido' })
+    }
+    let startDate = new Date(dateRange.startDate)
+    let endDate = new Date(dateRange.endDate)
+    if (endDate.getTime() <= startDate.getTime()) {
+      return callback(true, { error: 'El rango de fechas ingresado no es valido' })
+    }
+    Revista.app.models.Radicional.findById(journalId).then(radicional => {
+      let crossref = radicional.crossref
+      if (!crossref) {
+        return callback(null, { error: 'No tiene registrado el Crossref' })
+      }
+      crossref += `&startDate=${dateRange.startDate}&endDate=${dateRange.endDate}`
+      axios.get(crossref).then(response => {
+        let dataJson = convert.xml2json(response.data, {compact: true, spaces: 4});
+        let articles = JSON.parse(dataJson).crossref_result.query_result.body.forward_link
+        let result = []
+        for (const iterator of articles) {
+          let authors = crossrefTools.getAuthors(iterator.journal_cite.contributors.contributor)
+          let year = iterator.journal_cite.year._text
+          let articleTitle = iterator.journal_cite.article_title._text
+          let journalTitle = iterator.journal_cite.journal_title._text
+          let doi = `https://doi.org/${iterator.journal_cite.doi._text}`
+          result.push(`<span>${authors} (${year}). ${articleTitle}, <i>${journalTitle}</i>. <a href="${doi}" target="_blank">${doi}</a></span>`)
+        }
+        callback(null, result)
+      })
+    })
+  };
+
+  Revista.remoteMethod(
+    'hasCrossref', {
+      accepts: [
+        {
+          "arg": "revistaId",
+          "type": "number",
+          "required": true,
+          "description": `Joyrnal id`
+        }
+      ],
+      http: {
+        path: '/:revistaId/hasCrossref',
+        verb: 'get'
+      },
+      returns: {
+        arg: 'state',
+        type: 'object',
+        description: "Boolean"
+      }
+    }
+  );
+
+  Revista.remoteMethod(
+    'getArticles', {
+      accepts: [
+        {
+          "arg": "revistaId",
+          "type": "number",
+          "required": true,
+          "description": `Joyrnal id`
+        },
+        {
+          "arg": "dateRange",
+          "type": "any",
+          "required": true,
+          "description": "JSON {startDate: [x],endDate: [y]}"
+        }
+      ],
+      http: {
+        path: '/:revistaId/getArticles',
+        verb: 'post'
+      },
+      returns: {
+        arg: 'state',
+        type: 'object',
+        description: "Lista de articulos"
+      }
+    }
+  );
+
   Revista.remoteMethod(
     'updateFullJournal', {
       accepts: [

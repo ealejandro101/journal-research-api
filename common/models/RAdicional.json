@@ -366,8 +366,23 @@
       "scale": null,
       "mysql": {
         "columnName": "videopresentacion",
-        "dataType": "varchar",
-        "dataLength": 100,
+        "dataType": "text",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "crossref": {
+      "type": "string",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "crossref",
+        "dataType": "text",
+        "dataLength": null,
         "dataPrecision": null,
         "dataScale": null,
         "nullable": "Y"

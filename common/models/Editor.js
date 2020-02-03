@@ -1,12 +1,16 @@
+var path = require('path');
+
 module.exports = function (Editor) {
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
-      host: 'http://journals-research.com',
+      host: 'www.journals-research.com',
       port: 3000,
       type: 'email',
       to: user.email,
       from: "dardocfp@gmail.com",
-      subject: 'Thanks for registerings.',
+      subject: 'Termina el proceso para registrarte en Dardo.',/*
+      text: "Gracias por registrarte. Haga click en el enlace a continuación para completar su registro.",
+      template: path.resolve(__dirname, '../emailFormat/index.ejs'),*/
       user: user,
       redirect: 'http://journals-research.com/#/Login',
     };
@@ -36,6 +40,7 @@ module.exports = function (Editor) {
     let isError = false
     let currenError = undefined
 
+    
     revista.estaActiva = 0
     if (id == 3) {
       revista.estaActiva = 1
