@@ -1,4 +1,4 @@
-let emailController =  require('./utilities/emailController.js')
+let CryptoJS = require('crypto-js')
 
 module.exports = function(app) {
     let Editor = app.models.Editor
@@ -74,4 +74,12 @@ module.exports = function(app) {
             })
         });
     })
+
+    /*app.post('/custom/Admin/encryptCrossref', function(req, res){
+        let crossref = req.body.crossref
+        let encryptedCrossref = CryptoJS.AES.encrypt(crossref, process.env.CROSSREF_SECRET).toString();
+        res.status(200).send({
+            crossref: encryptedCrossref
+        })
+    })*/
 }

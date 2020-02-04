@@ -1,6 +1,7 @@
 let axios = require("axios");
 let convert = require('xml-js');
 let crossrefTools =  require('./../../server/tools/crossref.js')
+let CryptoJS = require('crypto-js')
 
 module.exports = function(Revista) {
   let methods = {
@@ -390,7 +391,9 @@ module.exports = function(Revista) {
       return callback(true, { error: 'El rango de fechas ingresado no es valido' })
     }
     Revista.app.models.Radicional.findById(journalId).then(radicional => {
-      let crossref = radicional.crossref
+      let bytesCrossref = CryptoJS.AES.decrypt(radicional.crossref.toString(), process.env.CROSSREF_SECRET);
+      let decryptedCrossref = bytesCrossref.toString(CryptoJS.enc.Utf8);
+      let crossref = decryptedCrossref
       if (!crossref) {
         return callback(null, { error: 'No tiene registrado el Crossref' })
       }
