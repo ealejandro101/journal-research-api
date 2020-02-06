@@ -187,7 +187,7 @@ module.exports = function(Revista) {
     console.log(query);
     
     Revista.dataSource.connector.execute(query, [] , function (err, data) {
-      if(data === undefined){
+      if(!Array.isArray(data)){
         return callback(null, []);
       }
       callback(null, data);

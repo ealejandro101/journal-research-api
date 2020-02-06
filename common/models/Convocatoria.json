@@ -197,6 +197,11 @@
       "type": "belongsTo",
       "model": "Rcontacto",
       "foreignKey": "revistaId"
+    },
+    "estadisticas": {
+      "type": "hasOne",
+      "model": "EstadisticasConvocatoria",
+      "foreignKey": "id"
     }
   },
   "acls": [

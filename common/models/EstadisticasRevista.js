@@ -1,6 +1,10 @@
 
 module.exports = function(EstadisticasRevista) {
-
+  /*
+  ----------------------------------------------------------------------
+  ----------------- Registrar interaccion de revista -------------------
+  ----------------------------------------------------------------------
+  */
   EstadisticasRevista.addJournalInteraction = function(journalId, interaction, callback) {
     let dateAux = new Date(Date.now())
     let period = `${dateAux.getFullYear()}-${dateAux.getMonth() + 1}`
@@ -66,4 +70,5 @@ module.exports = function(EstadisticasRevista) {
       }
     }
   );
+  
 };
