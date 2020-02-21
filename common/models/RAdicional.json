@@ -410,6 +410,26 @@
       "type": "belongsTo",
       "model": "Disciplina",
       "foreignKey": "disciplinaId3"
+    },
+    "periodicidad": {
+      "type": "belongsTo",
+      "model": "Periodicidad",
+      "foreignKey": "periodicidadId"
+    },
+    "tiporevisionporpares": {
+      "type": "belongsTo",
+      "model": "Tiporevisionpares",
+      "foreignKey": "tipoRevisionParesId"
+    },
+    "politicaautoarchivo": {
+      "type": "belongsTo",
+      "model": "Politicaautoarchivo",
+      "foreignKey": "politicaAutoarchivoId"
+    },
+    "estilocitacion": {
+      "type": "belongsTo",
+      "model": "Estilocitacion",
+      "foreignKey": "estiloCitacionId"
     }
   },
   "acls": [

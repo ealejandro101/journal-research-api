@@ -245,6 +245,11 @@
       "model": "Convocatoria",
       "foreignKey": "revistaId"
     },
+    "estadisticas": {
+      "type": "hasMany",
+      "model": "EstadisticasRevista",
+      "foreignKey": "revistaId"
+    },
     "ubicacion": {
       "type": "hasOne",
       "model": "Rubicacion",
@@ -260,6 +265,11 @@
       "model": "Idioma",
       "foreignKey": "revistaId",
       "through": "Ridiomas"
+    },
+    "licencia": {
+      "type": "belongsTo",
+      "model": "Licencia",
+      "foreignKey": "licenciaId"
     }
   },
   "acls": [

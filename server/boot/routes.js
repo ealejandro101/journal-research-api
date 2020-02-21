@@ -148,7 +148,7 @@ module.exports = function (app) {
   app.post('/custom/Admin/Statistics/getJournals', isAdmin, function (req, res) {
     let Revista = app.models.Revista
     const QUERY = `
-      SELECT revista.id, revista.titulo 
+      SELECT DISTINCT revista.id, revista.titulo 
       FROM revista, estadisticasrevista 
       WHERE revista.id = estadisticasrevista.revistaId
     `
