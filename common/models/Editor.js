@@ -278,4 +278,43 @@ module.exports = function (Editor) {
       }
     }
   );
+
+  Editor.myCfp = function (id, callback) {
+    let query = `
+      SELECT convocatoria.id, convocatoria.titulo, convocatoria.imagen, convocatoria.estado, revista.imagen AS journal_image 
+      FROM editor, editorpropietario, convocatoria, revista 
+      WHERE 
+        editor.id = ${id} AND editor.id = editorpropietario.editor_id AND 
+        editorpropietario.revista_id = revista.id AND 
+        convocatoria.revistaId = revista.id AND
+        convocatoria.fecha_final  >= "${(new Date(Date.now())).toISOString()}"
+    `
+    Editor.dataSource.connector.execute(query, [] , function (err, data) {
+      if(!Array.isArray(data)){
+        return callback(null, []);
+      }
+      return callback(null, data);
+    } );
+  }
+  Editor.remoteMethod(
+    'myCfp', {
+      accepts: [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": true,
+          "description": `Editor id`
+        }
+      ],
+      http: {
+        path: '/:id/myCfp',
+        verb: 'get'
+      },
+      returns: {
+        arg: 'cfps',
+        type: 'object',
+        description: "Establece si se realizo la insercion correctamente"
+      }
+    }
+  );
 };

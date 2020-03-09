@@ -240,6 +240,11 @@ module.exports = function(Revista) {
 
     
     radicional.id = revistaId
+    if (radicional.crossref) {
+      let crossref = radicional.crossref
+      let encryptedCrossref = CryptoJS.AES.encrypt(crossref, process.env.CROSSREF_SECRET).toString();
+      radicional.crossref = encryptedCrossref
+    }
     await Revista.app.models.Radicional.replaceById(revistaId, radicional).catch(error => {
       currenError = error
       isError = true
@@ -390,8 +395,12 @@ module.exports = function(Revista) {
     if (endDate.getTime() <= startDate.getTime()) {
       return callback(true, { error: 'El rango de fechas ingresado no es valido' })
     }
-    Revista.app.models.Radicional.findById(journalId).then(radicional => {
-      let bytesCrossref = CryptoJS.AES.decrypt(radicional.crossref.toString(), process.env.CROSSREF_SECRET);
+    Revista.findById(journalId, {
+      include: 'infoAdicional',
+      fields: ['id', 'doi']
+    }).then(response => {
+      let revista = JSON.parse(JSON.stringify(response))
+      let bytesCrossref = CryptoJS.AES.decrypt(revista.infoAdicional.crossref.toString(), process.env.CROSSREF_SECRET);
       let decryptedCrossref = bytesCrossref.toString(CryptoJS.enc.Utf8);
       let crossref = decryptedCrossref
       if (!crossref) {
@@ -403,14 +412,19 @@ module.exports = function(Revista) {
         let articles = JSON.parse(dataJson).crossref_result.query_result.body.forward_link
         let result = []
         for (const iterator of articles) {
-          let authors = crossrefTools.getAuthors(iterator.journal_cite.contributors.contributor)
-          let year = iterator.journal_cite.year._text
-          let articleTitle = iterator.journal_cite.article_title._text
-          let journalTitle = iterator.journal_cite.journal_title._text
-          let doi = `https://doi.org/${iterator.journal_cite.doi._text}`
-          result.push(`<span>${authors} (${year}). ${articleTitle}, <i>${journalTitle}</i>. <a href="${doi}" target="_blank">${doi}</a></span>`)
+          if (iterator._attributes.doi.toString().includes(revista.doi)) {
+            let doi = `https://doi.org/${iterator._attributes.doi}`
+            let authors = crossrefTools.getAuthors(iterator.journal_cite.contributors.contributor)
+            let year = iterator.journal_cite.year._text
+            let articleTitle = iterator.journal_cite.article_title._text
+            let journalTitle = iterator.journal_cite.journal_title._text
+            let doiRef = `https://doi.org/${iterator.journal_cite.doi._text}`
+            result.push(`<span>Doi: ${doi}</span><br /><span>${authors} (${year}). ${articleTitle}, <i>${journalTitle}</i>. <a href="${doiRef}" target="_blank">${doiRef}</a></span>`)
+          }
         }
         callback(null, result)
+      }).catch(err => {
+        callback(err, [])
       })
     })
   };

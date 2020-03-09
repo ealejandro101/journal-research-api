@@ -43,6 +43,19 @@
         "nullable": "N"
       }
     },
+    "icon": {
+      "type": "string",
+      "required": true,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "icon",
+        "dataType": "text",
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
     "hayrevista": {
       "type": "number",
       "required": true,
