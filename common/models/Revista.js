@@ -240,11 +240,6 @@ module.exports = function(Revista) {
 
     
     radicional.id = revistaId
-    if (radicional.crossref) {
-      let crossref = radicional.crossref
-      let encryptedCrossref = CryptoJS.AES.encrypt(crossref, process.env.CROSSREF_SECRET).toString();
-      radicional.crossref = encryptedCrossref
-    }
     await Revista.app.models.Radicional.replaceById(revistaId, radicional).catch(error => {
       currenError = error
       isError = true
@@ -384,6 +379,21 @@ module.exports = function(Revista) {
       }
       return callback(null, true)
     })
+  };
+
+  Revista.updateCrossref = function(journalId, crossref, callback){
+    let decryptedCrossref = crossref
+    Revista.app.models.Radicional.findById(journalId).then(radicional => {
+      let encryptedCrossref = CryptoJS.AES.encrypt(decryptedCrossref, process.env.CROSSREF_SECRET).toString();
+      radicional.crossref = encryptedCrossref
+      radicional.save().then(() => {
+        callback(null, true)
+      }).catch(() => {
+        callback(null, false)
+      })
+    }).catch(() => {
+      callback(null, false)
+    })
   }
 
   Revista.getArticles = function(journalId, dateRange, callback) {
@@ -414,12 +424,14 @@ module.exports = function(Revista) {
         for (const iterator of articles) {
           if (iterator._attributes.doi.toString().includes(revista.doi)) {
             let doi = `https://doi.org/${iterator._attributes.doi}`
-            let authors = crossrefTools.getAuthors(iterator.journal_cite.contributors.contributor)
-            let year = iterator.journal_cite.year._text
-            let articleTitle = iterator.journal_cite.article_title._text
-            let journalTitle = iterator.journal_cite.journal_title._text
-            let doiRef = `https://doi.org/${iterator.journal_cite.doi._text}`
-            result.push(`<span>Doi: ${doi}</span><br /><span>${authors} (${year}). ${articleTitle}, <i>${journalTitle}</i>. <a href="${doiRef}" target="_blank">${doiRef}</a></span>`)
+            if (iterator.journal_cite) {
+              let authors = crossrefTools.getAuthors(iterator.journal_cite.contributors.contributor)
+              let year = iterator.journal_cite.year._text
+              let articleTitle = iterator.journal_cite.article_title._text
+              let journalTitle = iterator.journal_cite.journal_title._text
+              let doiRef = `https://doi.org/${iterator.journal_cite.doi._text}`
+              result.push(`<span>Doi: ${doi}</span><br /><span>${authors} (${year}). ${articleTitle}, <i>${journalTitle}</i>. <a href="${doiRef}" target="_blank">${doiRef}</a></span>`)
+            }
           }
         }
         callback(null, result)
@@ -442,6 +454,34 @@ module.exports = function(Revista) {
       http: {
         path: '/:revistaId/hasCrossref',
         verb: 'get'
+      },
+      returns: {
+        arg: 'state',
+        type: 'object',
+        description: "Boolean"
+      }
+    }
+  );
+
+  Revista.remoteMethod(
+    'updateCrossref', {
+      accepts: [
+        {
+          "arg": "revistaId",
+          "type": "number",
+          "required": true,
+          "description": `Joyrnal id`
+        },
+        {
+          "arg": "crossref",
+          "type": "any",
+          "required": true,
+          "description": "Crossref"
+        }
+      ],
+      http: {
+        path: '/:revistaId/updateCrossref',
+        verb: 'post'
       },
       returns: {
         arg: 'state',

@@ -1,6 +1,20 @@
-var path = require('path');
-
 module.exports = function (Editor) {
+  Editor.on('resetPasswordRequest', function(info) {
+    var url = `http://journals-research.com/#/resetPassword/${info.accessToken.id}`;
+    var html = `Hola ${info.user.name}, <br /> Para recuperar tu cuenta utiliza el siguiente enlace: <a href="${url}">${url}</a>`
+    //'here' in above html is linked to : 'http://<host:port>/reset-password?access_token=<short-lived/temporary access token>'
+    Editor.app.models.Email.send({
+      to: info.email,
+      from: info.email,
+      subject: 'Password reset',
+      html: html
+    }, function(err) {
+      if (err) return console.log('> error sending password reset email');
+      console.log('> sending password reset email to:', info.email);
+    });
+  });
+
+
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
       host: 'www.journals-research.com',
