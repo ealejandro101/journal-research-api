@@ -5,10 +5,10 @@
   },
   "researchds": {
     "host": "localhost",
-    "database": "jasoluti_researchdb",
-    "password": "",
+    "database": "dardo_researchdb",
+    "password": "$8}SY$2~6aXT",
     "name": "researchds",
-    "user": "root",
+    "user": "dardo_researchdba",
     "connector": "mysql"
   },
   "myEmailDataSource": {

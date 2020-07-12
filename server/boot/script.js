@@ -14,7 +14,7 @@ function (err, models) {
   // Now we have a list of models keyed by the model name
   // Find the first record from the inventory
   console.log(JSON.stringify(models.Convocatoria.definition));//imprime el modelo
-});*/
+});
 module.exports = function(app) {
   let Editor = app.models.Editor
   let Role = app.models.Role;
@@ -25,6 +25,7 @@ module.exports = function(app) {
       name: 'admin'
     }, function(err, role) {
       if (err) throw err;
+      console.log(user);
       role.principals.create({
         principalType: RoleMapping.USER,
         principalId: user.id
@@ -35,3 +36,4 @@ module.exports = function(app) {
     });
   })
 }
+*/
