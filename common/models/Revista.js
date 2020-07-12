@@ -421,8 +421,9 @@ module.exports = function(Revista) {
         let dataJson = convert.xml2json(response.data, {compact: true, spaces: 4});
         let articles = JSON.parse(dataJson).crossref_result.query_result.body.forward_link
         let result = []
-        for (const iterator of articles) {
-          if (iterator._attributes.doi.toString().includes(revista.doi)) {
+        let iterablePv = articles || []
+        for (const iterator of iterablePv) {
+          if (iterator._attributes.doi.toString().includes(revista.doi?revista.doi.split("/")[0]:"")) {
             let doi = `https://doi.org/${iterator._attributes.doi}`
             if (iterator.journal_cite) {
               let authors = crossrefTools.getAuthors(iterator.journal_cite.contributors.contributor)
