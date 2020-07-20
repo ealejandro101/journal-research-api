@@ -423,7 +423,11 @@ module.exports = function(Revista) {
         let result = []
         let iterablePv = articles || []
         for (const iterator of iterablePv) {
+<<<<<<< HEAD
           if (iterator._attributes.doi.toString().includes(revista.doi?revista.doi.split("/")[0]:"")) {
+=======
+          if (iterator._attributes.doi.toString().includes(revista.doi)) {
+>>>>>>> 25457bd41bfaf10b205c6847396e1442bad472f2
             let doi = `https://doi.org/${iterator._attributes.doi}`
             if (iterator.journal_cite) {
               let authors = crossrefTools.getAuthors(iterator.journal_cite.contributors.contributor)
