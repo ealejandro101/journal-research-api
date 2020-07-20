@@ -27,7 +27,7 @@ module.exports = function (app) {
     }
   };
 
-  app.post('/custom/Editor/login', function (req, res) {
+  app.post('/api/custom/Editor/login', function (req, res) {
     Editor.login({
       email: req.body.email,
       password: req.body.password
@@ -51,19 +51,19 @@ module.exports = function (app) {
     })
   })
 
-  app.get('/custom/Editor/isLogged', sessionChecker, function (req, res) {
+  app.get('/api/custom/Editor/isLogged', sessionChecker, function (req, res) {
     res.status(200).send({
       accessToken: req.session.token,
       identifier: req.session.identifier
     })
   })
 
-  app.get('/custom/Editor/logout', sessionChecker, (req, res) => {
+  app.get('/api/custom/Editor/logout', sessionChecker, (req, res) => {
     res.clearCookie('user_sid');
     res.status(200).send();
   });
 
-  app.get('/custom/Editor/getFullObject', sessionChecker, (req, res) => {
+  app.get('/api/custom/Editor/getFullObject', sessionChecker, (req, res) => {
     Editor.find({
       where: {
         id: req.session.identifier
@@ -81,7 +81,7 @@ module.exports = function (app) {
 
   });
 
-  app.get('/custom/Roles/isAdmin', sessionChecker, function (req, res) {
+  app.get('/api/custom/Roles/isAdmin', sessionChecker, function (req, res) {
     Role.isInRole('admin', { principalType: RoleMapping.USER, principalId: req.session.identifier }, function (err, isInRole) {
       res.status(200).send({
         isInRole
@@ -89,7 +89,7 @@ module.exports = function (app) {
     });
   })
 
-  app.get('/custom/Admin/Statistics/Journal/getStatisticsInfo/:journalId', isAdmin, async function (req, res) {
+  app.get('/api/custom/Admin/Statistics/Journal/getStatisticsInfo/:journalId', isAdmin, async function (req, res) {
     let journalId = req.params.journalId
     let EstadisticasRevista = app.models.EstadisticasRevista
     let Convocatoria = app.models.Convocatoria
@@ -120,7 +120,7 @@ module.exports = function (app) {
     })
   })
 
-  app.post('/custom/Admin/Statistics/getGeneralStatistics', isAdmin, function (req, res) {
+  app.post('/api/custom/Admin/Statistics/getGeneralStatistics', isAdmin, function (req, res) {
     let EstadisticasRevista = app.models.EstadisticasRevista
     const QUERY = `
             SELECT 
@@ -145,7 +145,7 @@ module.exports = function (app) {
     });
   })
 
-  app.post('/custom/Admin/Statistics/getJournals', isAdmin, function (req, res) {
+  app.post('/api/custom/Admin/Statistics/getJournals', isAdmin, function (req, res) {
     let Revista = app.models.Revista
     const QUERY = `
       SELECT DISTINCT revista.id, revista.titulo 
@@ -166,7 +166,7 @@ module.exports = function (app) {
     });
   })
 
-  app.post('/custom/Admin/Statistics/getPeriods', isAdmin, function (req, res) {
+  app.post('/api/custom/Admin/Statistics/getPeriods', isAdmin, function (req, res) {
     let EstadisticasRevista = app.models.EstadisticasRevista
     let journalId =  req.body.journalId
     if (!journalId) {

@@ -22,7 +22,7 @@
         "port": 465,
         "auth": {
           "user": "dardocfp@gmail.com",
-          "pass": "revdardo@*"
+          "pass": ""
         }
       }
     ]
