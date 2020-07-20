@@ -33,8 +33,6 @@ module.exports = function(Convocatoria) {
           "revistaId": convocatoria.revistaId,
           "estado": 0
         })
-        console.log(convocatoriaCreated);
-        
         if (urlImg || urlPdf) {
           await mkdirp(`client/convocatorias/${convocatoria.revistaId}/${convocatoriaCreated.id}/`)
           if (urlImg) {
