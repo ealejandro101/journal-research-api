@@ -17,7 +17,7 @@ module.exports = function (Editor) {
 
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
-      host: 'dardo.info/api/',
+      host: 'dardo.info',
       port: 443,
       type: 'email',
       to: user.email,

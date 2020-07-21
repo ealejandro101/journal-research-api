@@ -25,7 +25,6 @@ module.exports = function(app) {
       name: 'admin'
     }, function(err, role) {
       if (err) throw err;
-      console.log(user);
       role.principals.create({
         principalType: RoleMapping.USER,
         principalId: user.id
