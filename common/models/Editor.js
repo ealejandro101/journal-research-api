@@ -14,8 +14,9 @@ module.exports = function (Editor) {
     });
   });
 
-  Editor.beforeRemote('create', function(context, next){
+  Editor.beforeRemote('create', function(context, unused, next){
     console.log(context);
+    console.log(unused);
     next()
   })
 
