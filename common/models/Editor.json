@@ -8,7 +8,7 @@
     "idInjection": false,
     "mysql": {
       "schema": "researchdb",
-      "table": "revista"
+      "table": "editor"
     }
   },
   "properties": {

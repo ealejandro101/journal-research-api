@@ -28,8 +28,6 @@ module.exports = function (Editor) {
       user: user,
       redirect: 'https://dardo.info/#/Login',
     };
-    
-    
     user.verify(options, function (err, response) {
       if (err) {
         console.log(err);
