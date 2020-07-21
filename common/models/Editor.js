@@ -14,6 +14,10 @@ module.exports = function (Editor) {
     });
   });
 
+  Editor.beforeRemote('create', function(context, next){
+    console.log(context);
+    next()
+  })
 
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
@@ -28,7 +32,6 @@ module.exports = function (Editor) {
       user: user,
       redirect: 'https://dardo.info/#/Login',
     };
-    console.log(user);
     user.verify(options, function (err, response) {
       if (err) {
         console.log(err);
