@@ -8,6 +8,10 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 
+
+
+ALTER TABLE `editor` CHANGE `emailVerified` `emailVerified` TINYINT(1) NOT NULL DEFAULT '0';
+ALTER TABLE `editor` CHANGE `edad` `edad` INT(3) NULL;
 --Actual--------------------------
 CREATE TABLE IF NOT EXISTS `estadisticasconvocatoria` ( 
   `id` INT(11) NOT NULL, 

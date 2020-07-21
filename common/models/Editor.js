@@ -1,6 +1,6 @@
 module.exports = function (Editor) {
   Editor.on('resetPasswordRequest', function(info) {
-    var url = `http://journals-research.com/#/resetPassword/${info.accessToken.id}`;
+    var url = `https://dardo.info/#/resetPassword/${info.accessToken.id}`;
     var html = `Hola ${info.user.name}, <br /> Para recuperar tu cuenta utiliza el siguiente enlace: <a href="${url}">${url}</a>`
     //'here' in above html is linked to : 'http://<host:port>/reset-password?access_token=<short-lived/temporary access token>'
     Editor.app.models.Email.send({
@@ -17,8 +17,8 @@ module.exports = function (Editor) {
 
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
-      host: 'www.journals-research.com',
-      port: 3000,
+      host: 'dardo.info/api/',
+      port: 443,
       type: 'email',
       to: user.email,
       from: "dardocfp@gmail.com",
@@ -26,7 +26,7 @@ module.exports = function (Editor) {
       text: "Gracias por registrarte. Haga click en el enlace a continuación para completar su registro.",
       template: path.resolve(__dirname, '../emailFormat/index.ejs'),*/
       user: user,
-      redirect: 'http://journals-research.com/#/Login',
+      redirect: 'https://dardo.info/#/Login',
     };
     
     
