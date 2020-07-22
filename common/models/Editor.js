@@ -14,12 +14,6 @@ module.exports = function (Editor) {
     });
   });
 
-  Editor.beforeRemote('create', function(context, unused, next){
-    console.log(context);
-    console.log(unused);
-    next()
-  })
-
   Editor.afterRemote('create', function (context, user, next) {
     var options = {
       host: 'www.dardo.info',
@@ -296,6 +290,9 @@ module.exports = function (Editor) {
     }
   );
 
+
+
+
   Editor.myCfp = function (id, callback) {
     let query = `
       SELECT convocatoria.id, convocatoria.titulo, convocatoria.imagen, convocatoria.estado, revista.imagen AS journal_image 
@@ -334,4 +331,5 @@ module.exports = function (Editor) {
       }
     }
   );
+
 };
