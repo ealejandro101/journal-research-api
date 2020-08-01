@@ -31,7 +31,7 @@ module.exports = function(Convocatoria) {
           "documentoPdf": urlPdf,
           "link": convocatoria.link,
           "revistaId": convocatoria.revistaId,
-          "estado": 0
+          "estado": convocatoria.estado
         })
         console.log(convocatoriaCreated);
         
