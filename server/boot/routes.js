@@ -63,6 +63,21 @@ module.exports = function (app) {
     res.status(200).send();
   });
 
+  app.post('/api/custom/Editor/register', (req, res) => {
+    let editor = req.body
+    Editor.create(editor).then(() => {
+      res.status(200).send({
+        created: true
+      })
+    }).catch(err => {
+      console.log(err);
+      res.status(500).send({
+        created: false,
+        error: err
+      })
+    })
+  });
+
   app.get('/api/custom/Editor/getFullObject', sessionChecker, (req, res) => {
     Editor.find({
       where: {
