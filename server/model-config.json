@@ -156,5 +156,9 @@
   "EstadisticasConvocatoria": {
     "dataSource": "researchds",
     "public": true
+  },
+  "PalabraConvocatoria": {
+    "dataSource": "researchds",
+    "public": true
   }
 }

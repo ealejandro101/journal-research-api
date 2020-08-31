@@ -1,3 +1,19 @@
+ALTER TABLE `convocatoria` ADD `editores_invitados` TEXT NULL AFTER `revistaId`;
+
+
+CREATE TABLE `palabraconvocatoria` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `convocatoria_id` int(11) NOT NULL,
+  `palabra_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_palabraconvocatoria_convocatoria` FOREIGN KEY (`convocatoria_id`) REFERENCES `convocatoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_palabraconvocatoria_palabra` FOREIGN KEY (`palabra_id`) REFERENCES `palabraclave` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+------OLD
+
 -- MySQL dump 10.13  Distrib 5.6.41, for Linux (x86_64)
 --
 -- Host: localhost    Database: jasoluti_researchdb

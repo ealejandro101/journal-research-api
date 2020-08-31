@@ -230,6 +230,8 @@ module.exports = function(Revista) {
     revista.fechaCreacion = (new Date(new Date().setFullYear(revista.fechaCreacion))).toISOString()
     revista.fechaIngreso = new Date().toISOString()
 
+    //Validar EISSN e ISSN
+
     await Revista.app.models.Revista.replaceById(revistaId, revista).then(response => {
       revistaId = response.id
     }).catch(error => {

@@ -51,6 +51,45 @@ module.exports = function (Editor) {
     let isError = false
     let currenError = undefined
 
+    //Validar formato ****************************************
+    //Validar existencia de eissn e issn
+    if (revista.issn || revista.eissn) {
+      let orQuery = []
+      if (revista.eissn) {
+        orQuery = orQuery.concat([{
+          eissn: revista.eissn
+        },
+        {
+          eissn: revista.eissn.replace('-', '')
+        }
+      ])
+      }
+      if (revista.issn) {
+        orQuery = orQuery.concat([{
+            issn: revista.issn
+          },
+          {
+            issn: revista.issn.replace('-', '')
+          }
+        ])
+      }
+      await Editor.app.models.Revista.find({
+        where: {
+          or: orQuery
+        }
+      }).then(response => {
+        if (response.length) {
+          return callback({
+            message: 'El EISSN o ISSN ya se encuentra en la base de datos de Dardo.'
+          })
+        }
+      }).catch(error => {
+        console.log(error);
+        currenError = error
+        isError = true
+        return callback(error)
+      })
+    }
     
     revista.estaActiva = 0
     if (id == 3) {
@@ -291,8 +330,6 @@ module.exports = function (Editor) {
   );
 
 
-
-
   Editor.myCfp = function (id, callback) {
     let query = `
       SELECT convocatoria.id, convocatoria.titulo, convocatoria.imagen, convocatoria.estado, revista.imagen AS journal_image 
@@ -328,6 +365,47 @@ module.exports = function (Editor) {
         arg: 'cfps',
         type: 'object',
         description: "Establece si se realizo la insercion correctamente"
+      }
+    }
+  );
+
+
+  Editor.revistasSuscritasConConvocatorias = function (id, callback) {
+    let query = `
+      SELECT DISTINCT revista.id, revista.issn, revista.eissn, revista.titulo, revista.titulo_corto
+      FROM revista, editor, convocatoria, suscripcioneditorrevista
+      WHERE 
+        editor.id = ${id} AND editor.id = suscripcioneditorrevista.editor_id AND 
+        suscripcioneditorrevista.revista_id = revista.id AND 
+        convocatoria.estado = 1 AND
+        convocatoria.revistaId = revista.id AND
+        convocatoria.fecha_final  >= "${(new Date(Date.now())).toISOString()}"
+    `
+    Editor.dataSource.connector.execute(query, [] , function (err, data) {
+      if(!Array.isArray(data)){
+        return callback(null, []);
+      }
+      return callback(null, data);
+    } );
+  }
+  Editor.remoteMethod(
+    'revistasSuscritasConConvocatorias', {
+      accepts: [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": true,
+          "description": `Editor id`
+        }
+      ],
+      http: {
+        path: '/:id/revistasSuscritasConConvocatorias',
+        verb: 'get'
+      },
+      returns: {
+        arg: 'revistas',
+        type: 'object',
+        description: "Retorna las revistas suscritas que cuentan con convocatorias activas."
       }
     }
   );

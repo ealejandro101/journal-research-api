@@ -59,6 +59,21 @@
         "nullable": "N"
       }
     },
+    "editoresInvitados": {
+      "type": "String",
+      "required": true,
+      "length": 65535,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "editores_invitados",
+        "dataType": "text",
+        "dataLength": 65535,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      }
+    },
     "fechaInicio": {
       "type": "Date",
       "required": true,
