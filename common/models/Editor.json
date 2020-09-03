@@ -123,6 +123,11 @@
       "model": "Revista",
       "foreignKey": "editorId",
       "through": "EditorPropietario"
+    },
+    "throughPropietarioRevista": {
+      "type": "hasMany",
+      "model": "EditorPropietario",
+      "foreignKey": "editorId"
     }
   },
   "acls": [
@@ -134,10 +139,11 @@
       "property": "*"
     },
     {
-      "accessType": "WRITE",
+      "accessType": "*",
       "principalType": "ROLE",
       "principalId": "admin",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "*"
     }
   ],
   "methods": {}

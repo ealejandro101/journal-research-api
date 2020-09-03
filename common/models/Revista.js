@@ -230,8 +230,51 @@ module.exports = function(Revista) {
     revista.fechaCreacion = (new Date(new Date().setFullYear(revista.fechaCreacion))).toISOString()
     revista.fechaIngreso = new Date().toISOString()
 
-    //Validar EISSN e ISSN
-
+    //Validar formato
+    let regISSN = /^[0-9]{4}-[0-9]{3}[0-9A-Za-z]{1}$/
+    let isIssnValid = true
+    let isEissnValid = true
+    //Validar existencia de eissn e issn
+    if (revista.issn || revista.eissn) {
+      let orQuery = []
+      if (revista.eissn) {
+        isEissnValid = regISSN.test(revista.eissn)
+        orQuery = orQuery.concat([{
+            eissn: revista.eissn
+          },
+          {
+            eissn: revista.eissn.replace('-', '')
+          }
+        ])
+      }
+      if (revista.issn) {
+        isIssnValid = regISSN.test(revista.issn)
+        orQuery = orQuery.concat([{
+            issn: revista.issn
+          },
+          {
+            issn: revista.issn.replace('-', '')
+          }
+        ])
+      }
+      if (!isIssnValid || !isEissnValid) {
+        return callback({
+          message: 'El formato del (EISSN o ISSN) es incorrecto.'
+        })
+      }
+      try {
+        const response = await Revista.find({where: {or: orQuery}})
+        if (response.length && response[0].id !== revista.id) {
+          return callback({
+            message: 'El EISSN o ISSN ya se encuentra en la base de datos de Dardo.'
+          })
+        }
+      } catch (error) {
+        console.log(error);
+        return callback(error)
+      }
+    }
+    console.log("HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     await Revista.app.models.Revista.replaceById(revistaId, revista).then(response => {
       revistaId = response.id
     }).catch(error => {

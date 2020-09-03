@@ -63,12 +63,12 @@
   },
   "validations": [],
   "relations": {
-    "revistas": {
+    "revista": {
       "type": "belongsTo",
       "model": "Revista",
       "foreignKey": "revistaId"
     },
-    "editores": {
+    "editor": {
       "type": "belongsTo",
       "model": "Editor",
       "foreignKey": "editorId"

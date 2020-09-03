@@ -51,20 +51,25 @@ module.exports = function (Editor) {
     let isError = false
     let currenError = undefined
 
-    //Validar formato ****************************************
+    //Validar formato
+    let regISSN = /^[0-9]{4}-[0-9]{3}[0-9A-Za-z]{1}$/
+    let isIssnValid = true
+    let isEissnValid = true
     //Validar existencia de eissn e issn
     if (revista.issn || revista.eissn) {
       let orQuery = []
       if (revista.eissn) {
+        isEissnValid = regISSN.test(revista.eissn)
         orQuery = orQuery.concat([{
-          eissn: revista.eissn
-        },
-        {
-          eissn: revista.eissn.replace('-', '')
-        }
-      ])
+            eissn: revista.eissn
+          },
+          {
+            eissn: revista.eissn.replace('-', '')
+          }
+        ])
       }
       if (revista.issn) {
+        isIssnValid = regISSN.test(revista.eissn)
         orQuery = orQuery.concat([{
             issn: revista.issn
           },
@@ -72,6 +77,11 @@ module.exports = function (Editor) {
             issn: revista.issn.replace('-', '')
           }
         ])
+      }
+      if (!isIssnValid || !isEissnValid) {
+        return callback({
+          message: 'El formato del (EISSN o ISSN) es incorrecto.'
+        })
       }
       await Editor.app.models.Revista.find({
         where: {
@@ -90,7 +100,8 @@ module.exports = function (Editor) {
         return callback(error)
       })
     }
-    
+    console.log("HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    //Insercion de la revista
     revista.estaActiva = 0
     if (id == 3) {
       revista.estaActiva = 1
@@ -406,6 +417,67 @@ module.exports = function (Editor) {
         arg: 'revistas',
         type: 'object',
         description: "Retorna las revistas suscritas que cuentan con convocatorias activas."
+      }
+    }
+  );
+
+  Editor.createJournalProperty = async function (editorId, issn, callback) {
+    let arg = {
+      fields: ['id'],
+      where: {
+        or: [
+          {
+            issn: issn
+          },
+          {
+            eissn: issn
+          }
+        ]
+      }
+    }
+    try {
+      const journalResponse = await Editor.app.models.Revista.find(arg)
+      const journalId = journalResponse[0].id
+      arg = {
+        id: "",
+        editorId: editorId,
+        revistaId: journalId
+      }
+      const createJPropertyResponse = await Editor.app.models.EditorPropietario.create(arg)
+      if (!(createJPropertyResponse && createJPropertyResponse.id)) {
+        return callback(createJPropertyResponse)
+      }
+      return callback(null, {
+        state: true
+      })
+    } catch (error) {
+      return callback(error)
+    }
+  }
+  Editor.remoteMethod(
+    'createJournalProperty', {
+      accepts: [
+        {
+          "arg": "editorId",
+          "type": "number",
+          "required": true,
+          "description": `ID del editor.`
+        },
+        {
+          "arg": "issn",
+          "type": "text",
+          "required": true,
+          "description": `ISSN o EISSN de la revista.`
+        }
+      ],
+      http: {
+        path: '/:editorId/createJournalProperty',
+        verb: 'post'
+      },
+      returns: {
+        arg: 'state',
+        type: 'object',
+        description: "Establece si se realizo la opercacion correctamente"
       }
     }
   );
