@@ -24,6 +24,7 @@ module.exports = function (Pais) {
         estadisticasrevista.id = rubicacion.id 
       GROUP BY 
         pais.id
+      ORDER BY nro_Visitas DESC
     `
     Pais.dataSource.connector.execute(query, [] , function (err, data) {
       if(!Array.isArray(data)){
