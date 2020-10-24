@@ -51,6 +51,12 @@
       "model": "Revista",
       "foreignKey": "palabraClaveId",
       "through": "Palabrasclave"
+    },
+    "convocatorias": {
+      "type": "hasMany",
+      "model": "Convocatoria",
+      "foreignKey": "palabraId",
+      "through": "PalabraConvocatoria"
     }
   },
   "acls": [

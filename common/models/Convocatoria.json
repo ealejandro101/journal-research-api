@@ -61,7 +61,7 @@
     },
     "editoresInvitados": {
       "type": "String",
-      "required": true,
+      "required": false,
       "length": 65535,
       "precision": null,
       "scale": null,
@@ -212,6 +212,12 @@
       "type": "belongsTo",
       "model": "Rcontacto",
       "foreignKey": "revistaId"
+    },
+    "palabrasclaves": {
+      "type": "hasMany",
+      "model": "Palabraclave",
+      "foreignKey": "convocatoriaId",
+      "through": "PalabraConvocatoria"
     },
     "estadisticas": {
       "type": "hasOne",

@@ -225,7 +225,7 @@ module.exports = function(Revista) {
     let rpalabraclave = models.rpalabraclave
     let isError = false
     let currenError = undefined
-
+    let revisaPalabrasCreated = []
 
     revista.fechaCreacion = (new Date(new Date().setFullYear(revista.fechaCreacion))).toISOString()
     revista.fechaIngreso = new Date().toISOString()
@@ -274,7 +274,6 @@ module.exports = function(Revista) {
         return callback(error)
       }
     }
-    console.log("HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     await Revista.app.models.Revista.replaceById(revistaId, revista).then(response => {
       revistaId = response.id
     }).catch(error => {
@@ -369,44 +368,46 @@ module.exports = function(Revista) {
     if(isError){
       return callback(currenError)
     }
-    if (rpalabraclave.palabrasclave.length != 0) {
-      let palabrasclave = []
-      for (const iterator of rpalabraclave.palabrasclave.split(';')) {
-        let wordId = undefined
-        await Revista.app.models.Palabraclave.find({
-          where: {
-            palabraClave: iterator.trim()
+    try {
+      let x = await new Promise((resolve, reject) => {
+      Revista.app.models.Palabraclave.getIdsByKeywords(rpalabraclave.palabrasclave, (err, data) => {
+          if (err) {
+            reject(err)
           }
-        }).then(response => {
-          if (response.length > 0) {
-            wordId = response[0].id
-          }
+          resolve(data)
         })
-        if (wordId === undefined) {
-          await Revista.app.models.Palabraclave.replaceById(revistaId, {
-            id: "",
-            palabraClave: iterator.trim()
-          }).then(res => {
-            wordId = res.id
-          })
+      })
+      const currentKeywords = await Revista.app.models.Palabrasclave.find({
+        where: {
+          revistaId
         }
-        palabrasclave.push({
-          "id": "",
-          "palabraClaveId": wordId,
-          "revistaId": revistaId
+      })
+      const [keywordIdsForCreate, keywordIdsForDelete] = currentKeywords.reduce((accumulator, currentValue) => {
+        const newForCreate = accumulator[0].filter(wordId => wordId !== currentValue.palabraId)
+        let newForDelete = accumulator[1]
+        if (accumulator[0].length === newForCreate.length) {
+          newForDelete = accumulator[1].concat([currentValue])
+        }
+        return [newForCreate, newForDelete]
+      }, [x.ids, []])
+      for (const wordCreated of keywordIdsForDelete) {
+        wordCreated.destroy()
+      }
+      for (const wordId of keywordIdsForCreate) {
+        const created = await Revista.app.models.Palabrasclave.create({
+          id: '',
+          palabraClaveId: wordId,
+          revistaId
         })
+        revisaPalabrasCreated.push(created)
       }
-      await Revista.app.models.Palabrasclave.destroyAll({
-        revistaId: revistaId
+    } catch (error) {
+      revisaPalabrasCreated.forEach(item => {
+        item.destroy()
       })
-      await Revista.app.models.Palabrasclave.create(palabrasclave).catch(error => {
-        currenError = error
-        isError = true
-      })
-      if(isError){
-        return callback(currenError)
-      }
     }
+
+    
 
     await Revista.app.models.Pais.findById(rubicacion.paisId).then(pais => {
       pais.updateAttributes({

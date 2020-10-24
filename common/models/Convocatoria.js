@@ -9,7 +9,7 @@ module.exports = function(Convocatoria) {
      * @param {string} q Cadena de caracter para buscar por diferentes campos
      * @param {Function(Error, object)} callback
      */
-    Convocatoria.add = async function(convocatoria, callback) {
+    Convocatoria.add = async function(convocatoria, palabrasClave, callback) {
       let urlImg = null
       let urlPdf = null
       if (convocatoria.imagen) {
@@ -19,28 +19,29 @@ module.exports = function(Convocatoria) {
         urlPdf = `convocatorias/${convocatoria.revistaId}/convocatoriaId/doc.`+convocatoria.documentoPdf.substring(convocatoria.documentoPdf.indexOf('/') + 1, convocatoria.documentoPdf.indexOf(';base64'))
       }
       let convocatoriaCreated
+      let convocatoriaPalabras = []
       try {
         convocatoriaCreated = await Convocatoria.upsert({
-          "id": convocatoria.id,
-          "descripcion": convocatoria.descripcion,
-          "fechaInicio": convocatoria.fechaInicio,
-          "fechaFinal": convocatoria.fechaFinal,
-          "titulo": convocatoria.titulo,
-          "imagen": urlImg,
-          "video": convocatoria.video,
-          "documentoPdf": urlPdf,
-          "link": convocatoria.link,
-          "revistaId": convocatoria.revistaId,
-          "estado": convocatoria.estado
+          id: convocatoria.id,
+          descripcion: convocatoria.descripcion,
+          fechaInicio: convocatoria.fechaInicio,
+          fechaFinal: convocatoria.fechaFinal,
+          titulo: convocatoria.titulo,
+          imagen: urlImg,
+          video: convocatoria.video,
+          documentoPdf: urlPdf,
+          link: convocatoria.link,
+          revistaId: convocatoria.revistaId,
+          estado: convocatoria.estado,
+          editoresInvitados: convocatoria.editoresInvitados
         })
-        console.log(convocatoriaCreated);
-        
         if (urlImg || urlPdf) {
-          await mkdirp(`client/convocatorias/${convocatoria.revistaId}/${convocatoriaCreated.id}/`)
+          const i = await mkdirp(`client/convocatorias/${convocatoria.revistaId}/${convocatoriaCreated.id}/`)
           if (urlImg) {
             await new Promise((resolve, reject) => {
               fs.writeFile('client/'+urlImg.replace('convocatoriaId', convocatoriaCreated.id), convocatoria.imagen.split(';base64,').pop(), {encoding: 'base64'}, function(err) {
                 if (err) {
+                  console.log(err);
                   reject(err)
                 }
                 resolve(undefined)
@@ -58,12 +59,47 @@ module.exports = function(Convocatoria) {
             })
           }
         }
+        let x = await new Promise((resolve, reject) => {
+          Convocatoria.app.models.Palabraclave.getIdsByKeywords(palabrasClave.palabrasclave, (err, data) => {
+            if (err) {
+              reject(err)
+            }
+            resolve(data)
+          })
+        })
+        const currentKeywords = await Convocatoria.app.models.PalabraConvocatoria.find({
+          where: {
+            convocatoriaId: convocatoria.id
+          }
+        })
+        const [keywordIdsForCreate, keywordIdsForDelete] = currentKeywords.reduce((accumulator, currentValue) => {
+          const newForCreate = accumulator[0].filter(wordId => wordId !== currentValue.palabraId)
+          let newForDelete = accumulator[1]
+          if (accumulator[0].length === newForCreate.length) {
+            newForDelete = accumulator[1].concat([currentValue])
+          }
+          return [newForCreate, newForDelete]
+        }, [x.ids, []])
+        for (const wordCreated of keywordIdsForDelete) {
+          wordCreated.destroy()
+        }
+        for (const wordId of keywordIdsForCreate) {
+          const created = await Convocatoria.app.models.PalabraConvocatoria.upsert({
+            id: '',
+            palabraId: wordId,
+            convocatoriaId: convocatoriaCreated.id
+          })
+          convocatoriaPalabras.push(created)
+        }
       } catch (error) {
         console.log(error);
         if (convocatoriaCreated.id) {
           convocatoriaCreated.destroy()
         }
-        return callback(err, { error: {message: 'Error interno del servidor'}});
+        convocatoriaPalabras.forEach(convPalCreated => {
+          convPalCreated.destroy()
+        })
+        return callback(error, { error: {message: 'Error interno del servidor'}});
       }
       return callback(null, convocatoriaCreated)
     }
@@ -79,7 +115,14 @@ module.exports = function(Convocatoria) {
           "type": "Object",
           "required": true,
           "description": ``
-        }],
+        },
+        {
+          "arg": "palabrasClave",
+          "type": "Object",
+          "required": true,
+          "description": `Palabras clave separadas por (;)`
+        },
+        ],
         returns: {
           arg: 'convocatoria',
           type: 'object',

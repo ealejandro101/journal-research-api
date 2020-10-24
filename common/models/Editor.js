@@ -69,7 +69,7 @@ module.exports = function (Editor) {
         ])
       }
       if (revista.issn) {
-        isIssnValid = regISSN.test(revista.eissn)
+        isIssnValid = regISSN.test(revista.issn)
         orQuery = orQuery.concat([{
             issn: revista.issn
           },
@@ -100,7 +100,6 @@ module.exports = function (Editor) {
         return callback(error)
       })
     }
-    console.log("HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     //Insercion de la revista
     revista.estaActiva = 0
     if (id == 3) {
